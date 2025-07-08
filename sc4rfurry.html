@@ -1,0 +1,3186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Usama Asif - Software Developer & Penetration Tester | Creating secure software and breaking insecure ones">
+    <title>SC4RFURRY.EXE // Usama Asif Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Black+Ops+One&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    
+    <style>
+        :root {
+            /* Enhanced Color Scheme */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #1a1a2e;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --neon-pink: #ff006e;
+            --neon-blue: #00f5ff;
+            --neon-green: #00ff88;
+            --neon-yellow: #ffee00;
+            --neon-purple: #8b00ff;
+            --neon-orange: #ff6600;
+            --text-primary: #ffffff;
+            --text-secondary: #b4b4b4;
+            --glow-intensity: 0 0 20px;
+            --focus-outline: 3px solid var(--neon-blue);
+            --crt-flicker: rgba(18, 16, 16, 0.1);
+        }
+
+        /* CRT Screen Effect */
+        @keyframes flicker {
+            0% { opacity: 0.27861; }
+            5% { opacity: 0.34769; }
+            10% { opacity: 0.23604; }
+            15% { opacity: 0.90626; }
+            20% { opacity: 0.18128; }
+            25% { opacity: 0.83891; }
+            30% { opacity: 0.65583; }
+            35% { opacity: 0.67807; }
+            40% { opacity: 0.26559; }
+            45% { opacity: 0.84693; }
+            50% { opacity: 0.96019; }
+            55% { opacity: 0.08594; }
+            60% { opacity: 0.20313; }
+            65% { opacity: 0.71988; }
+            70% { opacity: 0.53455; }
+            75% { opacity: 0.37288; }
+            80% { opacity: 0.71428; }
+            85% { opacity: 0.70419; }
+            90% { opacity: 0.7003; }
+            95% { opacity: 0.36108; }
+            100% { opacity: 0.24387; }
+        }
+
+        @keyframes textShadow {
+            0% { text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+            5% { text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+            10% { text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+            100% { text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 0 1px rgba(255,0,80,0.3), 0 0 3px; }
+        }
+
+        .crt::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(var(--crt-flicker) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        .crt::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--neon-pink), var(--neon-blue));
+            border-radius: 6px;
+            box-shadow: var(--glow-intensity) var(--neon-pink);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--neon-blue), var(--neon-purple));
+        }
+
+        /* Animated Gradient Background */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), #0f0f23, #1a0033);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Retro Window Styles */
+        .retro-window {
+            position: fixed;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: 1px 1px 0 #000000;
+            min-width: 300px;
+            min-height: 200px;
+            z-index: 100;
+        }
+
+        .window-header {
+            background: linear-gradient(to right, #000080, #1084d0);
+            color: white;
+            padding: 2px 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            user-select: none;
+        }
+
+        .window-title {
+            font-family: 'MS Sans Serif', sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .window-btn {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            font-size: 10px;
+            line-height: 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .window-btn:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+        }
+
+        .window-content {
+            padding: 8px;
+            background: #c0c0c0;
+            font-family: 'MS Sans Serif', sans-serif;
+            font-size: 11px;
+            color: #000000;
+        }
+
+        /* ASCII Art Styles */
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1;
+            color: var(--neon-green);
+            text-shadow: 0 0 5px currentColor;
+            font-size: clamp(0.5rem, 1vw, 0.8rem);
+        }
+
+        /* Pixel Art Button */
+        .pixel-btn {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--neon-pink);
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            cursor: pointer;
+        }
+
+        .pixel-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--neon-pink);
+            z-index: -1;
+            filter: blur(4px);
+        }
+
+        .pixel-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(to right, transparent 2px, var(--neon-pink) 2px, var(--neon-pink) 4px, transparent 4px),
+                linear-gradient(to bottom, transparent 2px, var(--neon-pink) 2px, var(--neon-pink) 4px, transparent 4px);
+            background-size: 4px 4px;
+            mix-blend-mode: multiply;
+        }
+
+        /* Particle System Container */
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            box-shadow: 0 0 6px currentColor;
+        }
+
+        /* Sound Toggle Button */
+        .sound-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .sound-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .sound-toggle.muted {
+            border-color: var(--neon-pink);
+        }
+
+        .sound-toggle svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Retro Tooltip */
+        .retro-tooltip {
+            position: absolute;
+            background: #ffffe1;
+            border: 1px solid #000000;
+            padding: 4px 8px;
+            font-family: 'MS Sans Serif', sans-serif;
+            font-size: 11px;
+            color: #000000;
+            box-shadow: 1px 1px 0 #808080;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 10000;
+        }
+
+        .retro-tooltip.show {
+            opacity: 1;
+        }
+
+        /* SVG Circuit Pattern */
+        .circuit-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glitch Image Effect */
+        .glitch-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glitch-img img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .glitch-img::before,
+        .glitch-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            opacity: 0;
+            mix-blend-mode: screen;
+        }
+
+        .glitch-img:hover::before {
+            animation: glitch-img 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+            opacity: 0.8;
+        }
+
+        .glitch-img:hover::after {
+            animation: glitch-img 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes glitch-img {
+            0% { transform: translateX(0); filter: hue-rotate(0deg); }
+            20% { transform: translateX(-2px); filter: hue-rotate(90deg); }
+            40% { transform: translateX(2px); filter: hue-rotate(180deg); }
+            60% { transform: translateX(-1px); filter: hue-rotate(270deg); }
+            80% { transform: translateX(1px); filter: hue-rotate(360deg); }
+            100% { transform: translateX(0); filter: hue-rotate(0deg); }
+        }
+
+        /* Animated SVG Logo */
+        .animated-logo {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .animated-logo path {
+            fill: none;
+            stroke: var(--neon-pink);
+            stroke-width: 2;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawPath 3s ease forwards;
+        }
+
+        @keyframes drawPath {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Morphing Shapes */
+        .morph-shape {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.1;
+        }
+
+        /* Boot Sequence Overlay */
+        .boot-sequence {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', monospace;
+            padding: 20px;
+            z-index: 10001;
+            display: none;
+            overflow: hidden;
+        }
+
+        .boot-text {
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        /* Interactive Matrix Cell */
+        .matrix-interactive {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .matrix-interactive:hover {
+            color: var(--neon-pink);
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        /* Retro Progress Bar */
+        .retro-progress {
+            width: 100%;
+            height: 20px;
+            background: #000000;
+            border: 2px solid #c0c0c0;
+            border-style: inset;
+            padding: 2px;
+        }
+
+        .retro-progress-bar {
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                #0000ff,
+                #0000ff 10px,
+                #000080 10px,
+                #000080 20px
+            );
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        /* Easter Egg Styles */
+        .easter-egg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 30px currentColor;
+            animation: easterEggPulse 1s infinite;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+
+        @keyframes easterEggPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Mini Game Container */
+        .mini-game {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--neon-purple);
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        /* DVD Logo Bounce */
+        .dvd-logo {
+            position: fixed;
+            width: 100px;
+            height: 60px;
+            background: var(--neon-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-family: 'Black Ops One', cursive;
+            color: var(--bg-primary);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--neon-blue);
+            color: var(--bg-primary);
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100000;
+            font-weight: bold;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            cursor: none;
+            position: relative;
+            animation: textShadow 1.6s infinite;
+        }
+
+        /* Enhanced Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-pink);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s, border-color 0.2s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 0, 110, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s;
+        }
+
+        .cursor.hover {
+            transform: scale(1.5);
+            border-color: var(--neon-blue);
+        }
+
+        /* Focus Indicators */
+        *:focus {
+            outline: var(--focus-outline);
+            outline-offset: 4px;
+        }
+
+        /* Animated Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.3;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 245, 255, 0.03) 2px, rgba(0, 245, 255, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 0, 110, 0.03) 2px, rgba(255, 0, 110, 0.03) 4px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1s;
+        }
+
+        .loading-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-green);
+            text-shadow: var(--glow-intensity) var(--neon-green);
+            margin-bottom: 2rem;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 30px;
+            border: 2px solid var(--neon-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            width: 0%;
+            transition: width 0.3s;
+            box-shadow: var(--glow-intensity) var(--neon-green);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Black Ops One', cursive;
+            font-size: 1.5rem;
+            color: var(--neon-pink);
+            text-shadow: var(--glow-intensity) var(--neon-pink);
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: var(--glow-intensity) var(--neon-pink); }
+            20% { text-shadow: -2px 0 var(--neon-blue), 2px 0 var(--neon-green); }
+            40% { text-shadow: 2px 0 var(--neon-yellow), -2px 0 var(--neon-pink); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--neon-blue);
+            text-shadow: var(--glow-intensity) var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            background: rgba(0, 245, 255, 0.1);
+            transform: skew(-10deg);
+        }
+
+        .nav-links a[aria-current="page"] {
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--neon-pink);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: -6rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-title::before,
+        .hero-title::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-title::before {
+            color: var(--neon-pink);
+            animation: glitch-1 0.5s infinite;
+            z-index: -1;
+        }
+
+        .hero-title::after {
+            color: var(--neon-blue);
+            animation: glitch-2 0.5s infinite;
+            z-index: -1;
+        }
+
+        @keyframes glitch-1 {
+            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            20% { clip-path: inset(10% 0 85% 0); transform: translate(-5px); }
+            40% { clip-path: inset(80% 0 5% 0); transform: translate(5px); }
+            60% { clip-path: inset(40% 0 40% 0); transform: translate(5px); }
+            80% { clip-path: inset(25% 0 60% 0); transform: translate(-5px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+            20% { clip-path: inset(85% 0 10% 0); transform: translate(5px); }
+            40% { clip-path: inset(5% 0 80% 0); transform: translate(-5px); }
+            60% { clip-path: inset(40% 0 40% 0); transform: translate(-5px); }
+            80% { clip-path: inset(60% 0 25% 0); transform: translate(5px); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin: 2rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--neon-pink);
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-pink);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover::before,
+        .btn:focus::before {
+            left: 0;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            color: var(--bg-primary);
+            box-shadow: var(--glow-intensity) var(--neon-pink);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            border-color: var(--neon-blue);
+        }
+
+        .btn-secondary::before {
+            background: var(--neon-blue);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            box-shadow: var(--glow-intensity) var(--neon-blue);
+        }
+
+        /* Sections with Glassmorphism */
+        .section {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--neon-pink) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--neon-yellow);
+            text-shadow: var(--glow-intensity) var(--neon-yellow);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '_';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--neon-blue), var(--neon-pink));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            width: calc(50% - 2rem);
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(50px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-purple);
+            border-radius: 50%;
+            box-shadow: var(--glow-intensity) var(--neon-purple);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+
+        .timeline-date {
+            color: var(--neon-blue);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px) rotateX(10deg);
+            transform-style: preserve-3d;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .project-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .project-card:hover,
+        .project-card:focus-within {
+            transform: translateY(-10px) rotateX(0deg);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(255, 238, 0, 0.1);
+            border: 1px solid var(--neon-yellow);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--neon-yellow);
+            transition: all 0.3s;
+        }
+
+        .tech-tag:hover {
+            background: rgba(255, 238, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            position: relative;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+
+        .skill-percentage {
+            color: var(--neon-blue);
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Testimonials Section */
+        .testimonials-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .testimonial-author {
+            color: var(--neon-pink);
+            font-weight: bold;
+        }
+
+        .testimonial-role {
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: none;
+            border: 2px solid var(--neon-purple);
+            color: var(--neon-purple);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-btn:hover,
+        .carousel-btn:focus {
+            background: var(--neon-purple);
+            color: var(--bg-primary);
+            transform: scale(1.1);
+        }
+
+        /* Blog Preview Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 0, 255, 0.3);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-image::after {
+            content: 'BLOG';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            opacity: 0.1;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            color: var(--neon-yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 5px;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+            background: rgba(0, 245, 255, 0.05);
+        }
+
+        /* Terminal Window */
+        .terminal {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-green);
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: var(--neon-green);
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+        }
+
+        .terminal-body {
+            padding: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--neon-green);
+            min-height: 200px;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            opacity: 0;
+        }
+
+        .terminal-prompt {
+            color: var(--neon-pink);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .social-links a:hover,
+        .social-links a:focus {
+            color: var(--neon-pink);
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        /* Floating Elements */
+        .floating-shape {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            opacity: 0.1;
+            z-index: -1;
+            animation: float-random 20s infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 70%;
+            right: 10%;
+            animation-delay: 5s;
+            border-radius: 50%;
+        }
+
+        .floating-shape:nth-child(3) {
+            bottom: 20%;
+            left: 50%;
+            animation-delay: 10s;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+
+        @keyframes float-random {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -100px) rotate(90deg); }
+            50% { transform: translate(-100px, -200px) rotate(180deg); }
+            75% { transform: translate(-200px, 100px) rotate(270deg); }
+        }
+
+        /* Performance Optimizations */
+        .section {
+            contain: layout style paint;
+            will-change: transform, opacity;
+        }
+        
+        .project-card,
+        .skill-item,
+        .blog-card {
+            contain: layout style;
+            will-change: transform;
+        }
+        
+        .particle {
+            will-change: transform, opacity;
+            contain: layout style;
+        }
+        
+        /* GPU Acceleration */
+        .matrix-bg,
+        .floating-shape,
+        .morph-shape,
+        .dvd-logo {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        .performance-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--neon-green);
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: var(--neon-green);
+            display: none;
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+            
+            /* Disable heavy effects on mobile */
+            .crt::before,
+            .crt::after,
+            .particle-container,
+            .circuit-pattern,
+            .dvd-logo,
+            .morph-shape {
+                display: none;
+            }
+            
+            .cursor,
+            .cursor-follower {
+                display: none;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 2rem;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 40px);
+                left: 40px !important;
+                transform: translateX(0) !important;
+            }
+            
+            .timeline-item::before {
+                left: -30px !important;
+            }
+            
+            .projects-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .retro-window,
+            .mini-game,
+            .sound-toggle {
+                display: none !important;
+            }
+            
+            /* Simplify animations on mobile */
+            @keyframes float-random {
+                0%, 100% { transform: translate(0, 0); }
+            }
+            
+            .floating-shape {
+                animation: none;
+                opacity: 0.05;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .matrix-bg,
+            .grid-overlay,
+            .floating-shape,
+            .cursor,
+            .cursor-follower,
+            .loading-screen {
+                display: none;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .section {
+                background: white;
+                border: 1px solid black;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="crt gradient-bg">
+    <!-- Skip to Content Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen" role="status" aria-live="polite">
+        <div class="loading-text">INITIALIZING PORTFOLIO.EXE</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <!-- Animated Background -->
+    <canvas class="matrix-bg" id="matrixCanvas" aria-hidden="true"></canvas>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <!-- Floating Shapes -->
+    <div class="floating-shape" aria-hidden="true"></div>
+    <div class="floating-shape" aria-hidden="true"></div>
+    <div class="floating-shape" aria-hidden="true"></div>
+
+    <!-- SVG Circuit Pattern -->
+    <svg class="circuit-pattern" aria-hidden="true">
+        <defs>
+            <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                <path d="M10,10 L30,10 L30,30 L50,30" stroke="var(--neon-blue)" stroke-width="0.5" fill="none" opacity="0.5"/>
+                <circle cx="10" cy="10" r="2" fill="var(--neon-blue)"/>
+                <circle cx="30" cy="30" r="2" fill="var(--neon-pink)"/>
+                <circle cx="50" cy="30" r="2" fill="var(--neon-green)"/>
+                <path d="M70,70 L70,50 L90,50 L90,30" stroke="var(--neon-pink)" stroke-width="0.5" fill="none" opacity="0.5"/>
+                <rect x="65" y="65" width="10" height="10" fill="none" stroke="var(--neon-yellow)" stroke-width="0.5" opacity="0.5"/>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#circuit)"/>
+    </svg>
+
+    <!-- Particle Container -->
+    <div class="particle-container" id="particleContainer" aria-hidden="true"></div>
+
+    <!-- DVD Logo Bounce -->
+    <div class="dvd-logo" id="dvdLogo" aria-hidden="true">DVD</div>
+
+    <!-- Easter Egg Display -->
+    <div class="easter-egg" id="easterEgg" aria-hidden="true">🚀 KONAMI!</div>
+
+    <!-- Sound Toggle -->
+    <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound effects">
+        <svg viewBox="0 0 24 24" id="soundIcon">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+    </button>
+
+    <!-- Retro Tooltip -->
+    <div class="retro-tooltip" id="retroTooltip" aria-hidden="true"></div>
+
+    <!-- Mini Game Container -->
+    <div class="mini-game" id="miniGame" aria-hidden="true">
+        <canvas id="gameCanvas" width="180" height="180"></canvas>
+    </div>
+
+    <!-- Boot Sequence -->
+    <div class="boot-sequence" id="bootSequence" aria-hidden="true">
+        <div class="boot-text" id="bootText"></div>
+    </div>
+
+    <!-- Retro Windows -->
+    <div class="retro-window" id="retroWindow" style="display: none; top: 100px; left: 100px;">
+        <div class="window-header">
+            <span class="window-title">Security Terminal v4.2</span>
+            <div class="window-controls">
+                <button class="window-btn" onclick="minimizeWindow()">_</button>
+                <button class="window-btn" onclick="maximizeWindow()">□</button>
+                <button class="window-btn" onclick="closeWindow()">×</button>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="ascii-art" id="asciiArt"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+    <!-- Performance Indicator -->
+    <div class="performance-indicator" id="performanceIndicator" aria-hidden="true">
+        FPS: <span id="fpsCounter">60</span>
+    </div>
+
+    <!-- Header -->
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="logo">
+                <svg class="animated-logo" viewBox="0 0 60 60" aria-label="Portfolio logo">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:var(--neon-pink);stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:var(--neon-blue);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:var(--neon-green);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Skull/Security themed logo -->
+                    <path d="M30 10 Q20 10 15 20 Q10 30 15 40 L20 45 L40 45 L45 40 Q50 30 45 20 Q40 10 30 10 Z" stroke="url(#logoGradient)" stroke-width="2" fill="none"/>
+                    <circle cx="22" cy="25" r="3" fill="url(#logoGradient)"/>
+                    <circle cx="38" cy="25" r="3" fill="url(#logoGradient)"/>
+                    <path d="M25 35 L30 32 L35 35" stroke="url(#logoGradient)" stroke-width="2" fill="none"/>
+                    <path d="M20 40 L20 45 M25 40 L25 45 M30 40 L30 45 M35 40 L35 45 M40 40 L40 45" stroke="url(#logoGradient)" stroke-width="2"/>
+                    <text x="30" y="55" text-anchor="middle" font-size="6" fill="url(#logoGradient)" font-family="monospace">SC4R</text>
+                </svg>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                ☰
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" aria-current="page">&lt;HOME/&gt;</a></li>
+                <li><a href="#about">&lt;ABOUT/&gt;</a></li>
+                <li><a href="#experience">&lt;EXPERIENCE/&gt;</a></li>
+                <li><a href="#projects">&lt;PROJECTS/&gt;</a></li>
+                <li><a href="#skills">&lt;SKILLS/&gt;</a></li>
+                <li><a href="#testimonials">&lt;TESTIMONIALS/&gt;</a></li>
+                <li><a href="#blog">&lt;BLOG/&gt;</a></li>
+                <li><a href="#contact">&lt;CONTACT/&gt;</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="home" aria-label="Hero section">
+            <div class="hero-content">
+                <div class="glitch-wrapper">
+                    <h1 class="hero-title" data-text="USAMA ASIF">USAMA ASIF</h1>
+                </div>
+                <p class="hero-subtitle">SOFTWARE DEVELOPER // PENETRATION TESTER // CYBERSECURITY EXPERT</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn">VIEW PROJECTS</a>
+                    <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about" aria-label="About section">
+            <h2 class="section-title">ABOUT_ME</h2>
+            <div class="terminal" role="region" aria-label="Terminal output">
+                <div class="terminal-header">
+                    <div class="terminal-button" aria-hidden="true"></div>
+                    <div class="terminal-button" aria-hidden="true"></div>
+                    <div class="terminal-button" aria-hidden="true"></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">user@portfolio:~$</span> cat about.txt
+                    </div>
+                    <div class="terminal-line">
+                        > Hi, I'm Usama Asif! Graduate Student, Software Developer
+                    </div>
+                    <div class="terminal-line">
+                        > & Penetration Tester! For the last 4 years, I've been
+                    </div>
+                    <div class="terminal-line">
+                        > working in Cyber Security on different projects and
+                    </div>
+                    <div class="terminal-line">
+                        > learning new technologies. Always looking for new challenges!
+                    </div>
+                    <div class="terminal-line">
+                        > Fun fact: I hate pineapples on pizza :D
+                    </div>
+                    <div class="terminal-line">
+                        > Currently working on: ShoDNA | Learning: Go Lang
+                    </div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">user@sc4rfurry:~$</span> <span class="typing-cursor">_</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="section" id="experience" aria-label="Experience section">
+            <h2 class="section-title">EXPERIENCE</h2>
+            <div class="timeline" role="list">
+                <!-- Timeline items will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects" aria-label="Projects section">
+            <h2 class="section-title">PROJECTS</h2>
+            <div class="projects-grid" id="projectsGrid" role="list">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills" aria-label="Skills section">
+            <h2 class="section-title">SKILLS</h2>
+            <div class="skills-container" id="skillsContainer" role="list">
+                <!-- Skills will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section" id="testimonials" aria-label="Testimonials section">
+            <h2 class="section-title">TESTIMONIALS</h2>
+            <div class="testimonials-carousel" role="region" aria-label="Testimonials carousel">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <!-- Testimonials will be loaded here -->
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="prevTestimonial" aria-label="Previous testimonial">←</button>
+                    <button class="carousel-btn" id="nextTestimonial" aria-label="Next testimonial">→</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Preview Section -->
+        <section class="section" id="blog" aria-label="Blog section">
+            <h2 class="section-title">LATEST_POSTS</h2>
+            <div class="blog-grid" id="blogGrid" role="list">
+                <!-- Blog posts will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact" aria-label="Contact section">
+            <h2 class="section-title">CONTACT</h2>
+            <form class="contact-form" id="contactForm" aria-label="Contact form">
+                <div class="form-group">
+                    <label for="name">NAME://</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">EMAIL://</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="message">MESSAGE://</label>
+                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
+                </div>
+                <button type="submit" class="btn">SEND MESSAGE</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <div class="social-links" role="navigation" aria-label="Social media links">
+            <a href="https://github.com/sc4rfurry" title="GitHub" aria-label="GitHub profile">⟨GH⟩</a>
+            <a href="https://sc4rfurry.github.io/" title="Website" aria-label="Personal website">⟨WEB⟩</a>
+            <a href="mailto:akalucifr@protonmail.ch" title="Email" aria-label="Email contact">⟨@⟩</a>
+            <a href="#" title="LinkedIn" aria-label="LinkedIn profile">⟨LI⟩</a>
+        </div>
+        <p>&copy; 2024 SC4RFURRY | DESIGNED IN THE CYBERSPACE | 🥷 /bin/stuxnet --pwn /bin/bash</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // Portfolio Data - Easy to edit
+        const portfolioData = {
+            experience: [
+                {
+                    date: "2020 - Present",
+                    title: "Graduate Student & Security Researcher",
+                    company: "University",
+                    description: "Pursuing advanced studies while conducting cybersecurity research and developing security tools."
+                },
+                {
+                    date: "2020 - Present",
+                    title: "Penetration Tester",
+                    company: "Freelance",
+                    description: "Conducting security assessments, vulnerability testing, and developing custom security tools."
+                },
+                {
+                    date: "2019 - 2020",
+                    title: "Junior Security Analyst",
+                    company: "CyberSec Firm",
+                    description: "Started journey in cybersecurity, learning offensive security techniques and tool development."
+                },
+                {
+                    date: "2018 - 2019",
+                    title: "Python Developer",
+                    company: "Tech Startup",
+                    description: "Developed automation scripts and backend systems using Python."
+                }
+            ],
+            projects: [
+                {
+                    title: "ShoDNA",
+                    description: "Advanced subdomain enumeration and reconnaissance tool for security assessments.",
+                    technologies: ["Python", "DNS", "OSINT", "Threading"],
+                    link: "https://github.com/sc4rfurry"
+                },
+                {
+                    title: "load_xl",
+                    description: "A Python Library for parsing Configuration files with enhanced security features.",
+                    technologies: ["Python", "Parsing", "Security"],
+                    link: "https://github.com/sc4rfurry/load_xl"
+                },
+                {
+                    title: "dr4kul4",
+                    description: "Sub-Domain Enumeration using crt.sh for enumeration. No API key required.",
+                    technologies: ["HTML", "Python", "OSINT", "Recon"],
+                    link: "https://github.com/sc4rfurry/dr4kul4"
+                },
+                {
+                    title: "nimd4-ng",
+                    description: "A Simple yet powerful port scanner written in Nim lang for fast network scanning.",
+                    technologies: ["Nim", "Networking", "Security"],
+                    link: "https://github.com/sc4rfurry/nimd4-ng"
+                },
+                {
+                    title: "ChaosKobra",
+                    description: "Advanced penetration testing framework with custom exploits and payloads.",
+                    technologies: ["Python", "Exploits", "Security"],
+                    link: "https://github.com/sc4rfurry/ChaosKobra"
+                },
+                {
+                    title: "Proxy Scraper",
+                    description: "Flask Web-App that fetches free proxies (HTTP/HTTPS/Socks4) from websites and APIs.",
+                    technologies: ["Python", "Flask", "Web Scraping"],
+                    link: "https://github.com/sc4rfurry"
+                }
+            ],
+            skills: [
+                { name: "Python", percentage: 95 },
+                { name: "Penetration Testing", percentage: 90 },
+                { name: "Linux/Bash", percentage: 90 },
+                { name: "Web Security", percentage: 85 },
+                { name: "Go Lang", percentage: 70 },
+                { name: "Nim", percentage: 75 },
+                { name: "OSINT", percentage: 85 },
+                { name: "Reverse Engineering", percentage: 80 },
+                { name: "Network Security", percentage: 85 },
+                { name: "Exploit Development", percentage: 80 }
+            ],
+            testimonials: [
+                {
+                    text: "Usama's expertise in cybersecurity is exceptional. His ability to find vulnerabilities and develop custom tools is impressive.",
+                    author: "Security Manager",
+                    role: "Fortune 500 Company"
+                },
+                {
+                    text: "Working with Usama on our security assessment was eye-opening. He discovered critical vulnerabilities we never knew existed.",
+                    author: "CTO",
+                    role: "Tech Startup"
+                },
+                {
+                    text: "A brilliant security researcher with deep knowledge of both offensive and defensive security techniques.",
+                    author: "Professor",
+                    role: "Computer Science Department"
+                }
+            ],
+            blogPosts: [
+                {
+                    date: "March 15, 2024",
+                    title: "Advanced Subdomain Enumeration Techniques",
+                    excerpt: "Exploring modern approaches to subdomain discovery and reconnaissance..."
+                },
+                {
+                    date: "February 28, 2024",
+                    title: "Building Custom Security Tools with Nim",
+                    excerpt: "Why Nim is becoming the go-to language for high-performance security tools..."
+                },
+                {
+                    date: "February 10, 2024",
+                    title: "OSINT Automation with Python",
+                    excerpt: "Automating intelligence gathering for more efficient security assessments..."
+                }
+            ]
+        };
+
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger, TextPlugin, MotionPathPlugin);
+
+        // Audio Context for Sound Effects
+        let audioContext;
+        let soundEnabled = false;
+        
+        function initAudio() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        function playSound(frequency, duration, type = 'sine') {
+            if (!soundEnabled || !audioContext) return;
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = type;
+            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + duration);
+        }
+
+        // Konami Code Easter Egg
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    activateEasterEgg();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        function activateEasterEgg() {
+            $('#easterEgg').fadeIn(500);
+            playSound(440, 0.1);
+            setTimeout(() => playSound(554, 0.1), 100);
+            setTimeout(() => playSound(659, 0.1), 200);
+            setTimeout(() => playSound(880, 0.3), 300);
+            
+            // Trigger special effects
+            createParticleBurst(window.innerWidth / 2, window.innerHeight / 2, 50);
+            
+            setTimeout(() => {
+                $('#easterEgg').fadeOut(500);
+            }, 3000);
+        }
+
+        // Particle System
+        const particles = [];
+        const maxParticles = 100;
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 5;
+                this.vy = (Math.random() - 0.5) * 5;
+                this.life = 1;
+                this.decay = Math.random() * 0.02 + 0.005;
+                this.element = document.createElement('div');
+                this.element.className = 'particle';
+                this.element.style.left = x + 'px';
+                this.element.style.top = y + 'px';
+                document.getElementById('particleContainer').appendChild(this.element);
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= this.decay;
+                this.element.style.left = this.x + 'px';
+                this.element.style.top = this.y + 'px';
+                this.element.style.opacity = this.life;
+                
+                if (this.life <= 0) {
+                    this.element.remove();
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        function createParticleBurst(x, y, count) {
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle(x, y));
+            }
+        }
+
+        function updateParticles() {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                if (!particles[i].update()) {
+                    particles.splice(i, 1);
+                }
+            }
+            requestAnimationFrame(updateParticles);
+        }
+        updateParticles();
+
+        // DVD Logo Bounce
+        const dvdLogo = document.getElementById('dvdLogo');
+        let dvdX = Math.random() * (window.innerWidth - 100);
+        let dvdY = Math.random() * (window.innerHeight - 60);
+        let dvdVX = 2;
+        let dvdVY = 2;
+        const colors = ['var(--neon-pink)', 'var(--neon-blue)', 'var(--neon-green)', 'var(--neon-yellow)', 'var(--neon-purple)'];
+
+        function animateDVDLogo() {
+            dvdX += dvdVX;
+            dvdY += dvdVY;
+
+            if (dvdX <= 0 || dvdX >= window.innerWidth - 100) {
+                dvdVX = -dvdVX;
+                dvdLogo.style.background = colors[Math.floor(Math.random() * colors.length)];
+                playSound(220, 0.1);
+            }
+
+            if (dvdY <= 0 || dvdY >= window.innerHeight - 60) {
+                dvdVY = -dvdVY;
+                dvdLogo.style.background = colors[Math.floor(Math.random() * colors.length)];
+                playSound(220, 0.1);
+            }
+
+            dvdLogo.style.left = dvdX + 'px';
+            dvdLogo.style.top = dvdY + 'px';
+
+            requestAnimationFrame(animateDVDLogo);
+        }
+        animateDVDLogo();
+
+        // Boot Sequence
+        function showBootSequence() {
+            const bootSequence = document.getElementById('bootSequence');
+            const bootText = document.getElementById('bootText');
+            bootSequence.style.display = 'block';
+            
+            const bootMessages = [
+                'SC4RFURRY SECURITY BIOS v4.2',
+                'Copyright (C) 2024, Cyber Defense Industries',
+                '',
+                'CPU: Neural Core i9-H4CK3R @ 5.0GHz',
+                'Memory Test: 32768MB OK',
+                '',
+                'Detecting Security Modules...',
+                'Primary Master: EXPLOIT_ENGINE 2TB',
+                'Primary Slave: VULN_DATABASE 1TB',
+                '',
+                'Loading Security Frameworks...',
+                '[OK] Metasploit Framework',
+                '[OK] Burp Suite Professional',
+                '[OK] Nmap Scanner',
+                '[OK] Python Arsenal',
+                '',
+                'Initializing Stealth Mode...',
+                'Establishing Secure Connections...',
+                'Loading Penetration Testing Tools...',
+                '',
+                'System Armed and Ready.',
+                '',
+                '🥷 Welcome to the DARK SIDE.'
+            ];
+
+            let index = 0;
+            const bootInterval = setInterval(() => {
+                if (index < bootMessages.length) {
+                    bootText.textContent += bootMessages[index] + '\n';
+                    playSound(100 + Math.random() * 100, 0.05, 'square');
+                    index++;
+                } else {
+                    clearInterval(bootInterval);
+                    setTimeout(() => {
+                        bootSequence.style.display = 'none';
+                    }, 1000);
+                }
+            }, 100);
+        }
+
+        // ASCII Art Generator
+        const asciiFrames = [
+            `
+     ___________
+    |  SYSTEM   |
+    | BREACHED  |
+    |    >_     |
+    | root@pwn  |
+    |___________|
+            `,
+            `
+      _______
+     /       \\
+    | 0 x 0 0 |
+    |    <    |
+    |  -----  |
+     \\_______/
+      SCANNING
+            `,
+            `
+     [========]
+     | H4CK3R |
+     | MODE:  |
+     | ACTIVE |
+     [========]
+       🥷
+            `
+        ];
+
+        let asciiIndex = 0;
+        function animateASCII() {
+            const asciiArt = document.getElementById('asciiArt');
+            if (asciiArt) {
+                asciiArt.textContent = asciiFrames[asciiIndex];
+                asciiIndex = (asciiIndex + 1) % asciiFrames.length;
+            }
+        }
+        setInterval(animateASCII, 1000);
+
+        // Retro Window Functions
+        window.minimizeWindow = function() {
+            gsap.to('#retroWindow', { scale: 0.1, opacity: 0, duration: 0.3, onComplete: () => {
+                $('#retroWindow').hide();
+            }});
+        };
+
+        window.maximizeWindow = function() {
+            const win = $('#retroWindow');
+            if (win.hasClass('maximized')) {
+                win.removeClass('maximized');
+                gsap.to('#retroWindow', { width: 300, height: 200, top: 100, left: 100, duration: 0.3 });
+            } else {
+                win.addClass('maximized');
+                gsap.to('#retroWindow', { width: '90%', height: '90%', top: '5%', left: '5%', duration: 0.3 });
+            }
+        };
+
+        window.closeWindow = function() {
+            playSound(150, 0.1, 'square');
+            gsap.to('#retroWindow', { scale: 0, rotation: 720, opacity: 0, duration: 0.5, onComplete: () => {
+                $('#retroWindow').hide();
+            }});
+        };
+
+        // Make windows draggable
+        function makeDraggable(element) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            element.querySelector('.window-header').onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Initialize draggable windows
+        document.querySelectorAll('.retro-window').forEach(makeDraggable);
+
+        // Sound Toggle
+        $('#soundToggle').on('click', function() {
+            if (!audioContext) initAudio();
+            soundEnabled = !soundEnabled;
+            $(this).toggleClass('muted');
+            playSound(440, 0.1);
+            
+            // Update icon
+            const icon = $('#soundIcon');
+            if (soundEnabled) {
+                icon.html('<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>');
+            } else {
+                icon.html('<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>');
+            }
+        });
+
+        // Retro Tooltip System
+        function showTooltip(text, x, y) {
+            const tooltip = $('#retroTooltip');
+            tooltip.text(text).css({ left: x + 'px', top: y + 'px' }).addClass('show');
+        }
+
+        function hideTooltip() {
+            $('#retroTooltip').removeClass('show');
+        }
+
+        // Add tooltips to buttons
+        $('.btn, .nav-links a, .skill-item, .project-card').hover(
+            function(e) {
+                const text = $(this).find('.project-title').text() || 
+                           $(this).find('.skill-name').text() || 
+                           $(this).text();
+                showTooltip(text, e.pageX + 10, e.pageY + 10);
+            },
+            function() {
+                hideTooltip();
+            }
+        );
+
+        // Interactive Matrix Enhancement
+        function enhanceMatrix() {
+            const matrixCanvas = document.getElementById('matrixCanvas');
+            matrixCanvas.addEventListener('click', (e) => {
+                const rect = matrixCanvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Create ripple effect
+                createParticleBurst(e.clientX, e.clientY, 20);
+                playSound(800, 0.1, 'sine');
+            });
+        }
+
+        // Mini Game Implementation
+        let gameActive = false;
+        const gameCanvas = document.getElementById('gameCanvas');
+        const gameCtx = gameCanvas ? gameCanvas.getContext('2d') : null;
+
+        function initMiniGame() {
+            if (!gameCtx) return;
+            
+            // Simple snake game
+            let snake = [{x: 90, y: 90}];
+            let direction = {x: 10, y: 0};
+            let food = {x: Math.floor(Math.random() * 18) * 10, y: Math.floor(Math.random() * 18) * 10};
+            
+            function gameLoop() {
+                if (!gameActive) return;
+                
+                // Clear canvas
+                gameCtx.fillStyle = '#000000';
+                gameCtx.fillRect(0, 0, 180, 180);
+                
+                // Move snake
+                const head = {x: snake[0].x + direction.x, y: snake[0].y + direction.y};
+                
+                // Check boundaries
+                if (head.x < 0) head.x = 170;
+                if (head.x > 170) head.x = 0;
+                if (head.y < 0) head.y = 170;
+                if (head.y > 170) head.y = 0;
+                
+                snake.unshift(head);
+                
+                // Check food collision
+                if (head.x === food.x && head.y === food.y) {
+                    food = {x: Math.floor(Math.random() * 18) * 10, y: Math.floor(Math.random() * 18) * 10};
+                    playSound(660, 0.1);
+                } else {
+                    snake.pop();
+                }
+                
+                // Draw snake
+                gameCtx.fillStyle = '#00ff00';
+                snake.forEach(segment => {
+                    gameCtx.fillRect(segment.x, segment.y, 8, 8);
+                });
+                
+                // Draw food
+                gameCtx.fillStyle = '#ff0000';
+                gameCtx.fillRect(food.x, food.y, 8, 8);
+                
+                setTimeout(gameLoop, 100);
+            }
+            
+            // Game controls
+            document.addEventListener('keydown', (e) => {
+                if (!gameActive) return;
+                switch(e.key) {
+                    case 'ArrowUp': if (direction.y === 0) direction = {x: 0, y: -10}; break;
+                    case 'ArrowDown': if (direction.y === 0) direction = {x: 0, y: 10}; break;
+                    case 'ArrowLeft': if (direction.x === 0) direction = {x: -10, y: 0}; break;
+                    case 'ArrowRight': if (direction.x === 0) direction = {x: 10, y: 0}; break;
+                }
+            });
+            
+            gameActive = true;
+            gameLoop();
+        }
+
+        // Show mini game on triple click
+        let clickCount = 0;
+        let clickTimer;
+        
+        document.addEventListener('click', (e) => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            
+            if (clickCount === 3) {
+                $('#miniGame').toggle();
+                if ($('#miniGame').is(':visible')) {
+                    initMiniGame();
+                } else {
+                    gameActive = false;
+                }
+                clickCount = 0;
+            }
+            
+            clickTimer = setTimeout(() => {
+                clickCount = 0;
+            }, 500);
+        });
+
+        // Morphing SVG Shapes
+        function createMorphingShapes() {
+            const morphShapes = document.querySelectorAll('.morph-shape');
+            morphShapes.forEach((shape, index) => {
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('viewBox', '0 0 100 100');
+                svg.setAttribute('width', '100');
+                svg.setAttribute('height', '100');
+                
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('fill', `var(--neon-${['pink', 'blue', 'green'][index % 3]})`);
+                
+                const shapes = [
+                    'M50,10 L90,40 L75,90 L25,90 L10,40 Z',
+                    'M50,10 Q90,50 50,90 Q10,50 50,10',
+                    'M25,25 L75,25 L75,75 L25,75 Z'
+                ];
+                
+                path.setAttribute('d', shapes[0]);
+                svg.appendChild(path);
+                shape.appendChild(svg);
+                
+                // Animate morphing
+                gsap.to(path, {
+                    attr: { d: shapes[1] },
+                    duration: 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'power2.inOut'
+                });
+            });
+        }
+
+        // Glitch text effect for headings
+        function addGlitchEffect() {
+            $('.section-title, .hero-title').each(function() {
+                const text = $(this).text();
+                $(this).attr('data-text', text);
+            });
+        }
+
+        // Performance monitoring
+        let fps = 60;
+        let lastTime = performance.now();
+        function updateFPS() {
+            const currentTime = performance.now();
+            fps = Math.round(1000 / (currentTime - lastTime));
+            lastTime = currentTime;
+            $('#fpsCounter').text(fps);
+            
+            // Adjust quality if FPS drops
+            if (fps < 30) {
+                $('.particle-container').css('display', 'none');
+            } else if (fps > 50) {
+                $('.particle-container').css('display', 'block');
+            }
+            
+            requestAnimationFrame(updateFPS);
+        }
+
+        // Show performance indicator in development
+        if (window.location.hostname === 'localhost') {
+            $('#performanceIndicator').show();
+            updateFPS();
+        }
+
+        // Loading Animation
+        $(document).ready(function() {
+            // Show boot sequence on first visit
+            if (!localStorage.getItem('bootShown')) {
+                showBootSequence();
+                localStorage.setItem('bootShown', 'true');
+            }
+            
+            // Preload fonts and critical resources
+            document.fonts.ready.then(() => {
+                let progress = 0;
+                const loadingInterval = setInterval(() => {
+                    progress += Math.random() * 20;
+                    if (progress >= 100) {
+                        progress = 100;
+                        $('#loadingProgress').css('width', progress + '%');
+                        setTimeout(() => {
+                            $('#loadingScreen').css('opacity', '0');
+                            setTimeout(() => {
+                                $('#loadingScreen').hide();
+                                initializeAnimations();
+                                
+                                // Show retro window after 2 seconds
+                                setTimeout(() => {
+                                    $('#retroWindow').show();
+                                    gsap.from('#retroWindow', {
+                                        scale: 0,
+                                        rotation: -720,
+                                        duration: 0.5,
+                                        ease: 'back.out'
+                                    });
+                                    playSound(440, 0.2, 'square');
+                                }, 2000);
+                            }, 1000);
+                        }, 500);
+                        clearInterval(loadingInterval);
+                    } else {
+                        $('#loadingProgress').css('width', progress + '%');
+                    }
+                }, 200);
+            });
+        });
+
+        // Matrix Background Effect (Optimized)
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function initMatrix() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            const charArray = characters.split('');
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#00ff88';
+                ctx.font = fontSize + 'px monospace';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = charArray[Math.floor(Math.random() * charArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            // Reduce frame rate for performance
+            setInterval(drawMatrix, 50);
+        }
+
+        // Initialize matrix only on desktop
+        if (window.innerWidth > 768) {
+            initMatrix();
+        }
+
+        // Enhanced Custom Cursor (Desktop only)
+        if (window.innerWidth > 768) {
+            const cursor = document.getElementById('cursor');
+            const cursorFollower = document.getElementById('cursorFollower');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let followerX = 0, followerY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Create trail particles occasionally
+                if (Math.random() < 0.1) {
+                    createParticleBurst(mouseX, mouseY, 1);
+                }
+            });
+
+            function animateCursor() {
+                // Smooth cursor movement
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                followerX += (mouseX - followerX) * 0.05;
+                followerY += (mouseY - followerY) * 0.05;
+
+                cursor.style.left = cursorX - 10 + 'px';
+                cursor.style.top = cursorY - 10 + 'px';
+                cursorFollower.style.left = followerX - 20 + 'px';
+                cursorFollower.style.top = followerY - 20 + 'px';
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            animateCursor();
+
+            // Cursor hover effects with sound
+            $('a, button, input, textarea, .project-card, .skill-item, .window-btn, .sound-toggle').hover(
+                function() { 
+                    cursor.classList.add('hover');
+                    gsap.to(cursor, { scale: 1.5, duration: 0.3 });
+                    gsap.to(cursorFollower, { scale: 1.2, duration: 0.3 });
+                    playSound(660, 0.05);
+                },
+                function() { 
+                    cursor.classList.remove('hover');
+                    gsap.to(cursor, { scale: 1, duration: 0.3 });
+                    gsap.to(cursorFollower, { scale: 1, duration: 0.3 });
+                }
+            );
+        }
+
+        // Initialize animations
+        function initializeAnimations() {
+            // Add glitch effects
+            addGlitchEffect();
+            
+            // Create morphing shapes
+            createMorphingShapes();
+            
+            // Enhance matrix
+            enhanceMatrix();
+            
+            // Initialize audio on first interaction
+            document.addEventListener('click', function initAudioOnClick() {
+                if (!audioContext) initAudio();
+                document.removeEventListener('click', initAudioOnClick);
+            }, { once: true });
+            
+            // Hero animations with enhanced effects
+            const heroTimeline = gsap.timeline();
+            heroTimeline
+                .to('.hero-title', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    onComplete: () => {
+                        // Add typing effect
+                        gsap.to('.hero-title', {
+                            textShadow: '0 0 30px var(--neon-pink)',
+                            repeat: -1,
+                            yoyo: true,
+                            duration: 2
+                        });
+                    }
+                })
+                .to('.hero-subtitle', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.5')
+                .to('.cta-buttons', {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.5');
+
+            // Animate logo on load
+            gsap.from('.animated-logo path', {
+                strokeDashoffset: 1000,
+                duration: 2,
+                stagger: 0.2,
+                ease: 'power2.inOut'
+            });
+
+            // Logo hover effect
+            $('.animated-logo').hover(
+                function() {
+                    gsap.to(this, {
+                        rotation: 360,
+                        scale: 1.2,
+                        duration: 0.5
+                    });
+                    playSound(880, 0.1);
+                },
+                function() {
+                    gsap.to(this, {
+                        rotation: 0,
+                        scale: 1,
+                        duration: 0.5
+                    });
+                }
+            );
+
+            // Section animations with ScrollTrigger and particle effects
+            gsap.utils.toArray('.section').forEach((section, index) => {
+                gsap.to(section, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse',
+                        onEnter: () => {
+                            // Create particles on section enter
+                            const rect = section.getBoundingClientRect();
+                            createParticleBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 10);
+                            playSound(440 + index * 110, 0.1);
+                        }
+                    }
+                });
+            });
+
+            // Enhanced terminal typing animation with sound
+            const terminalLines = document.querySelectorAll('.terminal-line');
+            const terminalTimeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.terminal',
+                    start: 'top 70%'
+                }
+            });
+
+            terminalLines.forEach((line, index) => {
+                terminalTimeline.to(line, {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: 'power2.inOut',
+                    onStart: () => {
+                        playSound(100 + Math.random() * 50, 0.05, 'square');
+                    }
+                }, index * 0.3);
+            });
+
+            // Create floating morph shapes
+            for (let i = 0; i < 3; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'morph-shape';
+                shape.style.left = Math.random() * window.innerWidth + 'px';
+                shape.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(shape);
+            }
+
+            // Parallax effect for circuit pattern
+            gsap.to('.circuit-pattern', {
+                y: -100,
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1
+                }
+            });
+
+            // Load dynamic content with enhanced animations
+            loadExperience();
+            loadProjects();
+            loadSkills();
+            loadTestimonials();
+            loadBlogPosts();
+        }
+
+        // Load Experience Timeline
+        function loadExperience() {
+            const timeline = $('.timeline');
+            portfolioData.experience.forEach((exp, index) => {
+                const item = $(`
+                    <div class="timeline-item" role="listitem">
+                        <div class="timeline-date">${exp.date}</div>
+                        <h3 class="timeline-title">${exp.title}</h3>
+                        <div class="timeline-company">${exp.company}</div>
+                        <p>${exp.description}</p>
+                    </div>
+                `);
+                timeline.append(item);
+            });
+
+            // Animate timeline items
+            gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+                gsap.to(item, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    delay: index * 0.1
+                });
+            });
+        }
+
+        // Load Projects
+        function loadProjects() {
+            const projectsGrid = $('#projectsGrid');
+            portfolioData.projects.forEach((project, index) => {
+                const projectCard = $(`
+                    <article class="project-card" role="listitem">
+                        <div class="glitch-img">
+                            <div style="height: 150px; background: linear-gradient(135deg, var(--neon-${['pink', 'blue', 'green', 'yellow', 'purple'][index % 5]}), var(--bg-secondary)); position: relative; overflow: hidden;">
+                                <div class="ascii-art" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; opacity: 0.2;">
+                                    ${['⚡', '💻', '🚀', '🎮', '🔮'][index % 5]}
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="project-title">${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                        <a href="${project.link}" class="pixel-btn" style="margin-top: 1rem; display: inline-block;">VIEW PROJECT</a>
+                    </article>
+                `);
+                projectsGrid.append(projectCard);
+            });
+
+            // Animate project cards with enhanced effects
+            gsap.utils.toArray('.project-card').forEach((card, index) => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    delay: index * 0.1
+                });
+
+                // Add hover sound effect
+                $(card).hover(
+                    function() {
+                        playSound(523, 0.05); // C5 note
+                    },
+                    function() {
+                        playSound(392, 0.05); // G4 note
+                    }
+                );
+            });
+        }
+
+        // Load Skills with Progress Bars
+        function loadSkills() {
+            const skillsContainer = $('#skillsContainer');
+            portfolioData.skills.forEach((skill, index) => {
+                const isRetroStyle = index % 3 === 0; // Every third skill gets retro style
+                
+                if (isRetroStyle) {
+                    const skillItem = $(`
+                        <div class="skill-item" role="listitem">
+                            <div class="skill-header">
+                                <span class="skill-name">${skill.name}</span>
+                                <span class="skill-percentage">${skill.percentage}%</span>
+                            </div>
+                            <div class="retro-progress">
+                                <div class="retro-progress-bar" data-percentage="${skill.percentage}"></div>
+                            </div>
+                        </div>
+                    `);
+                    skillsContainer.append(skillItem);
+                } else {
+                    const skillItem = $(`
+                        <div class="skill-item" role="listitem">
+                            <div class="skill-header">
+                                <span class="skill-name">${skill.name}</span>
+                                <span class="skill-percentage">${skill.percentage}%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-percentage="${skill.percentage}"></div>
+                            </div>
+                        </div>
+                    `);
+                    skillsContainer.append(skillItem);
+                }
+            });
+
+            // Animate skill bars with sound
+            gsap.utils.toArray('.skill-progress, .retro-progress-bar').forEach((bar, index) => {
+                const percentage = bar.dataset.percentage;
+                gsap.to(bar, {
+                    width: percentage + '%',
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: bar,
+                        start: 'top 90%',
+                        toggleActions: 'play none none reverse',
+                        onStart: () => {
+                            // Play loading sound
+                            for (let i = 0; i < 5; i++) {
+                                setTimeout(() => {
+                                    playSound(200 + i * 100, 0.05, 'square');
+                                }, i * 100);
+                            }
+                        }
+                    },
+                    onUpdate: function() {
+                        if (Math.random() < 0.1) {
+                            playSound(400 + Math.random() * 400, 0.02);
+                        }
+                    }
+                });
+            });
+        }
+
+        // Load Testimonials
+        function loadTestimonials() {
+            const testimonialsTrack = $('#testimonialsTrack');
+            portfolioData.testimonials.forEach((testimonial) => {
+                const card = $(`
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"${testimonial.text}"</p>
+                        <div class="testimonial-author">${testimonial.author}</div>
+                        <div class="testimonial-role">${testimonial.role}</div>
+                    </div>
+                `);
+                testimonialsTrack.append(card);
+            });
+
+            // Carousel functionality
+            let currentTestimonial = 0;
+            const totalTestimonials = portfolioData.testimonials.length;
+
+            function updateCarousel() {
+                const offset = -currentTestimonial * 100;
+                testimonialsTrack.css('transform', `translateX(${offset}%)`);
+            }
+
+            $('#prevTestimonial').on('click', () => {
+                currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+                updateCarousel();
+            });
+
+            $('#nextTestimonial').on('click', () => {
+                currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                updateCarousel();
+            });
+
+            // Auto-advance carousel
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+                updateCarousel();
+            }, 5000);
+        }
+
+        // Load Blog Posts
+        function loadBlogPosts() {
+            const blogGrid = $('#blogGrid');
+            portfolioData.blogPosts.forEach((post, index) => {
+                const blogCard = $(`
+                    <article class="blog-card" role="listitem">
+                        <div class="blog-image" aria-hidden="true"></div>
+                        <div class="blog-content">
+                            <div class="blog-date">${post.date}</div>
+                            <h3 class="blog-title">${post.title}</h3>
+                            <p class="blog-excerpt">${post.excerpt}</p>
+                        </div>
+                    </article>
+                `);
+                blogGrid.append(blogCard);
+            });
+
+            // Animate blog cards
+            gsap.utils.toArray('.blog-card').forEach((card, index) => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    delay: index * 0.1
+                });
+            });
+        }
+
+        // Mobile menu toggle
+        $('#menuToggle').on('click', function() {
+            const navLinks = $('#navLinks');
+            const isActive = navLinks.hasClass('active');
+            navLinks.toggleClass('active');
+            $(this).attr('aria-expanded', !isActive);
+        });
+
+        // Smooth scrolling with active state management
+        $('a[href^="#"]').on('click', function(e) {
+            e.preventDefault();
+            const target = $(this.getAttribute('href'));
+            if (target.length) {
+                // Update active state
+                $('.nav-links a').removeAttr('aria-current');
+                $(this).attr('aria-current', 'page');
+                
+                // Close mobile menu
+                $('#navLinks').removeClass('active');
+                $('#menuToggle').attr('aria-expanded', 'false');
+                
+                // Smooth scroll
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 80
+                }, 1000);
+            }
+        });
+
+        // Update active nav on scroll
+        const sections = $('section[id]');
+        $(window).on('scroll', function() {
+            const scrollPos = $(window).scrollTop() + 100;
+            
+            sections.each(function() {
+                const section = $(this);
+                const sectionTop = section.offset().top;
+                const sectionHeight = section.height();
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    const id = section.attr('id');
+                    $('.nav-links a').removeAttr('aria-current');
+                    $(`.nav-links a[href="#${id}"]`).attr('aria-current', 'page');
+                }
+            });
+        });
+
+        // Form submission
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            // Play success sound sequence
+            playSound(523, 0.1); // C
+            setTimeout(() => playSound(659, 0.1), 100); // E
+            setTimeout(() => playSound(784, 0.1), 200); // G
+            setTimeout(() => playSound(1047, 0.2), 300); // High C
+            
+            // Create particle burst at button
+            const btn = $(this).find('button[type="submit"]');
+            const rect = btn[0].getBoundingClientRect();
+            createParticleBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 30);
+            
+            // Show success message with animation
+            const originalText = btn.text();
+            btn.text('TRANSMITTING...').css('background', 'var(--neon-yellow)');
+            
+            setTimeout(() => {
+                btn.text('MESSAGE SENT!').css('background', 'var(--neon-green)');
+                
+                // Show retro alert
+                const alert = $(`
+                    <div class="retro-window" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10000;">
+                        <div class="window-header">
+                            <span class="window-title">Success</span>
+                            <div class="window-controls">
+                                <button class="window-btn" onclick="$(this).closest('.retro-window').remove()">×</button>
+                            </div>
+                        </div>
+                        <div class="window-content">
+                            <p>Message transmitted successfully!</p>
+                            <p>Response time: ${Math.floor(Math.random() * 24) + 1} hours</p>
+                        </div>
+                    </div>
+                `);
+                
+                $('body').append(alert);
+                gsap.from(alert[0], {
+                    scale: 0,
+                    rotation: 360,
+                    duration: 0.5,
+                    ease: 'back.out'
+                });
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    btn.text(originalText).css('background', '');
+                }, 3000);
+                
+                // Remove alert after 5 seconds
+                setTimeout(() => {
+                    gsap.to(alert[0], {
+                        scale: 0,
+                        opacity: 0,
+                        duration: 0.3,
+                        onComplete: () => alert.remove()
+                    });
+                }, 5000);
+            }, 1000);
+        });
+
+        // Typing effect for terminal
+        const typingCursor = $('.typing-cursor');
+        setInterval(() => {
+            typingCursor.toggle();
+        }, 500);
+
+        // Window resize handler
+        $(window).on('resize', function() {
+            if (window.innerWidth > 768 && !canvas.width) {
+                initMatrix();
+            }
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Intersection Observer for lazy loading
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Keyboard navigation enhancements
+        $(document).on('keydown', function(e) {
+            // Escape key closes mobile menu
+            if (e.key === 'Escape' && $('#navLinks').hasClass('active')) {
+                $('#navLinks').removeClass('active');
+                $('#menuToggle').attr('aria-expanded', 'false').focus();
+            }
+            
+            // Tab trapping in mobile menu when open
+            if ($('#navLinks').hasClass('active') && e.key === 'Tab') {
+                const focusableElements = $('#navLinks a:visible, #menuToggle');
+                const firstElement = focusableElements.first();
+                const lastElement = focusableElements.last();
+                
+                if (e.shiftKey && document.activeElement === firstElement[0]) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement[0]) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+
+        // Parallax effect on scroll (optimized)
+        let ticking = false;
+        function updateParallax() {
+            const scrolled = $(window).scrollTop();
+            $('.floating-shape').each(function(index) {
+                const speed = 0.5 + (index * 0.2);
+                $(this).css('transform', `translateY(${scrolled * speed}px)`);
+            });
+            ticking = false;
+        }
+
+        $(window).on('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+
+        // Add magnetic effect to buttons (desktop only)
+        if (window.innerWidth > 768) {
+            $('.btn, .pixel-btn').on('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(this, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3
+                });
+            });
+
+            $('.btn, .pixel-btn').on('mouseleave', function() {
+                gsap.to(this, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.3
+                });
+            });
+        }
+
+        // Global button click effects
+        $(document).on('click', '.btn, .pixel-btn, button', function(e) {
+            // Play click sound
+            playSound(440, 0.05);
+            setTimeout(() => playSound(554, 0.05), 50);
+            
+            // Create ripple effect
+            const rect = this.getBoundingClientRect();
+            const ripple = $('<span class="ripple"></span>');
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.css({
+                width: size,
+                height: size,
+                left: x,
+                top: y
+            });
+            
+            $(this).css('position', 'relative').css('overflow', 'hidden').append(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+
+        // Add ripple effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            }
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize everything
+        console.log('🥷 SC4RFURRY.EXE LOADED SUCCESSFULLY');
+        console.log('💀 Vulnerability Scanner: ACTIVE');
+        console.log('🔓 Press ↑↑↓↓←→←→BA to unlock root access!');
+        console.log('🎮 Triple-click anywhere to play HACK THE SYSTEM mini-game');
+        console.log('📧 Contact: akalucifr@protonmail.ch');
+    </script>
+</body>
+</html>
