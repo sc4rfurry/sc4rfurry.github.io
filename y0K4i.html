@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBERFOLIO_2025 | Retro-Future Portfolio</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        // Fallback for jQuery if CDN fails
+        if (typeof jQuery === 'undefined') {
+            document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"><\/script>');
+        }
+    </script>
+    
+    <style>
+        /* Base Variables & Reset */
+        :root {
+            --neon-pink: #ff006e;
+            --neon-blue: #00f5ff;
+            --neon-purple: #8b00ff;
+            --neon-green: #39ff14;
+            --dark-bg: #0a0a0a;
+            --light-bg: #f0f0f0;
+            --dark-text: #ffffff;
+            --light-text: #0a0a0a;
+            --grid-color: rgba(0, 245, 255, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--dark-bg);
+            color: var(--dark-text);
+            overflow-x: hidden;
+            cursor: none;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        body.light-mode {
+            background: var(--light-bg);
+            color: var(--light-text);
+            --grid-color: rgba(139, 0, 255, 0.3);
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-pink);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+        
+        .cursor-trail {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.5;
+        }
+        
+        /* Scanline Effect */
+        .scanlines::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border: 1px solid var(--neon-blue);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+        
+        /* Toggle Switches */
+        .toggle-container {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .toggle {
+            width: 40px;
+            height: 20px;
+            background: #333;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--neon-purple);
+        }
+        
+        .toggle-slider {
+            width: 16px;
+            height: 16px;
+            background: var(--neon-purple);
+            border-radius: 50%;
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+        
+        .toggle.active .toggle-slider {
+            transform: translateX(20px);
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        #webgl-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        .glitch-text {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: glitch 2s infinite;
+            position: relative;
+        }
+        
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch-text::before {
+            animation: glitch-1 0.5s infinite;
+            color: var(--neon-pink);
+            z-index: -1;
+        }
+        
+        .glitch-text::after {
+            animation: glitch-2 0.5s infinite;
+            color: var(--neon-blue);
+            z-index: -2;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 10px var(--neon-pink); }
+            50% { text-shadow: 0 0 20px var(--neon-blue); }
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip: rect(42px, 9999px, 44px, 0); }
+            50% { clip: rect(12px, 9999px, 59px, 0); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip: rect(25px, 9999px, 90px, 0); }
+            50% { clip: rect(60px, 9999px, 105px, 0); }
+        }
+        
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--neon-green);
+            text-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        /* About Section */
+        .terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--neon-green);
+            padding: 20px;
+            font-family: monospace;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terminal::before {
+            content: "TERMINAL.EXE";
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            font-size: 10px;
+            color: var(--neon-green);
+        }
+        
+        .terminal-text {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--neon-green);
+            animation: typing 3s steps(40) forwards, blink 0.5s infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        
+        /* Skills Bars */
+        .skill-bars {
+            margin-top: 40px;
+            display: grid;
+            gap: 20px;
+        }
+        
+        .skill {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .skill-name {
+            width: 120px;
+            text-align: right;
+            color: var(--neon-blue);
+        }
+        
+        .skill-bar {
+            flex: 1;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            transition: width 1s ease-out;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--neon-purple);
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-purple));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(139, 0, 255, 0.5);
+        }
+        
+        .vhs-label {
+            background: var(--neon-purple);
+            color: white;
+            padding: 5px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        /* Contact Form */
+        .retro-form {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--neon-green);
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--neon-green);
+            color: white;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        .submit-btn {
+            background: transparent;
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 15px 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn:hover {
+            color: white;
+            text-shadow: 0 0 10px white;
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--neon-blue);
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: rotate(45deg);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px var(--neon-pink);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--dark-bg);
+            border: 2px solid var(--neon-purple);
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            color: var(--neon-pink);
+            cursor: pointer;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glitch-text {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Audio Visualizer */
+        .audio-visualizer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            z-index: 100;
+        }
+        
+        .bar {
+            flex: 1;
+            background: var(--neon-green);
+            transition: height 0.1s;
+            opacity: 0.8;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* Light Mode Adjustments */
+        body.light-mode .terminal,
+        body.light-mode .project-card,
+        body.light-mode .retro-form {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--light-text);
+        }
+        
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        body.light-mode .form-group input,
+        body.light-mode .form-group textarea {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--light-text);
+        }
+    </style>
+</head>
+<body class="scanlines">
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-trail"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <a href="#hero">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">CONTACT</a>
+        <div class="toggle-container">
+            <div class="toggle" id="theme-toggle">
+                <div class="toggle-slider"></div>
+            </div>
+            <div class="toggle" id="audio-toggle">
+                <div class="toggle-slider"></div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Audio Visualizer -->
+    <div class="audio-visualizer">
+        <div class="bar" style="height: 20px;"></div>
+        <div class="bar" style="height: 30px;"></div>
+        <div class="bar" style="height: 15px;"></div>
+        <div class="bar" style="height: 25px;"></div>
+        <div class="bar" style="height: 35px;"></div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <canvas id="webgl-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="CYBERFOLIO">CYBERFOLIO</h1>
+            <p style="margin-top: 20px; font-size: 1.2rem; color: var(--neon-blue);">
+                &lt; DIGITAL ARCHITECT / CREATIVE CODER &gt;
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 30 30">
+                <polyline points="5,10 15,20 25,10" stroke="var(--neon-pink)" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>ABOUT.TXT</h2>
+            <div class="terminal">
+                <div class="terminal-text">
+                    <p class="typing-effect">> INITIALIZING BIO_SEQUENCE...</p>
+                    <p style="margin-top: 20px;">
+                        > Greetings, digital wanderer. I am a creative technologist 
+                        navigating the intersection of code and art. My mission: 
+                        crafting immersive digital experiences that push the 
+                        boundaries of web technology.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        > Specializing in WebGL, interactive design, and retro-futuristic 
+                        aesthetics. Currently exploring the synthesis of nostalgia 
+                        and innovation in the digital realm.
+                    </p>
+                </div>
+                
+                <div class="skill-bars">
+                    <div class="skill">
+                        <div class="skill-name">WEBGL</div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-skill="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">JAVASCRIPT</div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-skill="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">DESIGN</div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-skill="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">CREATIVITY</div>
+                        <div class="skill-bar">
+                            <div class="skill-fill" data-skill="95"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>PROJECTS.ZIP</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-project="1">
+                    <div class="vhs-label">VHS-001</div>
+                    <h3 style="color: var(--neon-purple); margin-bottom: 10px;">NEON DREAMS</h3>
+                    <p>Interactive WebGL experience featuring procedural neon landscapes and synthwave aesthetics.</p>
+                    <p style="margin-top: 10px; font-size: 12px; color: var(--neon-blue);">
+                        TECH: WebGL, GLSL, Three.js
+                    </p>
+                </div>
+                
+                <div class="project-card" data-project="2">
+                    <div class="vhs-label">VHS-002</div>
+                    <h3 style="color: var(--neon-purple); margin-bottom: 10px;">CYBER ARCADE</h3>
+                    <p>Retro-inspired browser game collection with modern twists on classic arcade gameplay.</p>
+                    <p style="margin-top: 10px; font-size: 12px; color: var(--neon-blue);">
+                        TECH: Canvas API, Web Audio
+                    </p>
+                </div>
+                
+                <div class="project-card" data-project="3">
+                    <div class="vhs-label">VHS-003</div>
+                    <h3 style="color: var(--neon-purple); margin-bottom: 10px;">GLITCH MATRIX</h3>
+                    <p>Real-time audio visualizer with glitch effects and matrix-inspired particle systems.</p>
+                    <p style="margin-top: 10px; font-size: 12px; color: var(--neon-blue);">
+                        TECH: Web Audio API, Shaders
+                    </p>
+                </div>
+                
+                <div class="project-card" data-project="4">
+                    <div class="vhs-label">VHS-004</div>
+                    <h3 style="color: var(--neon-purple); margin-bottom: 10px;">VAPORWAVE OS</h3>
+                    <p>Nostalgic operating system simulation with functional desktop environment in the browser.</p>
+                    <p style="margin-top: 10px; font-size: 12px; color: var(--neon-blue);">
+                        TECH: React, CSS3, LocalStorage
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>CONTACT.EXE</h2>
+            <form class="retro-form">
+                <div class="form-group">
+                    <label>NAME_</label>
+                    <input type="text" placeholder="Enter your designation...">
+                </div>
+                <div class="form-group">
+                    <label>EMAIL_</label>
+                    <input type="email" placeholder="your@email.net">
+                </div>
+                <div class="form-group">
+                    <label>MESSAGE_</label>
+                    <textarea rows="5" placeholder="Transmit your message..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">TRANSMIT</button>
+            </form>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--neon-blue)">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.308-.346-.11l-6.4 4.02-2.76-.918c-.6-.187-.612-.6.125-.89l10.782-4.156c.5-.18.94.12.78.88z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--neon-blue)">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6 9h-3v10h-4V9H9V6h2V4c0-2.21 1.79-4 4-4h3v3h-2c-.552 0-1 .448-1 1v2h3l-1 3z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--neon-blue)">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.5 8.5c0 .168-.014.335-.04.5.027.137.04.28.04.423 0 4.337-3.302 9.34-9.34 9.34A9.282 9.282 0 013 17.025a6.607 6.607 0 004.86-1.36 3.285 3.285 0 01-3.067-2.28 3.312 3.312 0 001.482-.056 3.283 3.283 0 01-2.633-3.218v-.04c.442.246.95.394 1.487.41a3.282 3.282 0 01-1.016-4.383A9.32 9.32 0 0010.878 9.52a3.28 3.28 0 015.592-2.993 6.568 6.568 0 002.085-.796 3.292 3.292 0 01-1.443 1.816A6.578 6.578 0 0019 7.054a6.703 6.703 0 01-1.5 1.446z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title" style="color: var(--neon-purple); margin-bottom: 20px;"></h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <!-- Audio Element -->
+    <audio id="bg-audio" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBTGH0fPTgjMGHm7A7+OZURE" type="audio/wav">
+    </audio>
+    
+    <script>
+        // WebGL 3D Scene
+        const canvas = document.getElementById('webgl-canvas');
+        const gl = canvas.getContext('webgl');
+        
+        // Resize canvas
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Vertex shader source
+        const vertexShaderSource = `
+            attribute vec3 position;
+            uniform mat4 modelViewMatrix;
+            uniform mat4 projectionMatrix;
+            uniform float time;
+            varying vec3 vPosition;
+            
+            void main() {
+                vPosition = position;
+                vec3 pos = position;
+                pos.y += sin(time + position.x * 2.0) * 0.1;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            }
+        `;
+        
+        // Fragment shader source
+        const fragmentShaderSource = `
+            precision mediump float;
+            uniform float time;
+            varying vec3 vPosition;
+            
+            void main() {
+                vec3 color = vec3(0.0, 0.96, 1.0); // Neon blue
+                float intensity = abs(sin(time * 2.0 + vPosition.y * 5.0));
+                gl_FragColor = vec4(color * intensity, 1.0);
+            }
+        `;
+        
+        // Create shader
+        function createShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            return shader;
+        }
+        
+        // Create program
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+        
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+        gl.useProgram(program);
+        
+        // Create pyramid geometry
+        const vertices = new Float32Array([
+            // Base
+            -1, -1, -1,  1, -1, -1,  1, -1,  1, -1, -1,  1,
+            // Faces
+            -1, -1, -1,  0,  1,  0,  1, -1, -1,
+             1, -1, -1,  0,  1,  0,  1, -1,  1,
+             1, -1,  1,  0,  1,  0, -1, -1,  1,
+            -1, -1,  1,  0,  1,  0, -1, -1, -1
+        ]);
+        
+        const vertexBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+        
+        // Get attribute and uniform locations
+        const positionLocation = gl.getAttribLocation(program, 'position');
+        const modelViewMatrixLocation = gl.getUniformLocation(program, 'modelViewMatrix');
+        const projectionMatrixLocation = gl.getUniformLocation(program, 'projectionMatrix');
+        const timeLocation = gl.getUniformLocation(program, 'time');
+        
+        // Enable vertex attribute
+        gl.enableVertexAttribArray(positionLocation);
+        gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, false, 0, 0);
+        
+        // Matrix math helpers
+        function createIdentityMatrix() {
+            return new Float32Array([
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+            ]);
+        }
+        
+        function createPerspectiveMatrix(fov, aspect, near, far) {
+            const f = 1.0 / Math.tan(fov / 2);
+            const rangeInv = 1 / (near - far);
+            
+            return new Float32Array([
+                f / aspect, 0, 0, 0,
+                0, f, 0, 0,
+                0, 0, (near + far) * rangeInv, -1,
+                0, 0, near * far * rangeInv * 2, 0
+            ]);
+        }
+        
+        function rotateY(matrix, angle) {
+            const c = Math.cos(angle);
+            const s = Math.sin(angle);
+            const m0 = matrix[0], m2 = matrix[2];
+            const m4 = matrix[4], m6 = matrix[6];
+            const m8 = matrix[8], m10 = matrix[10];
+            
+            matrix[0] = c * m0 - s * m2;
+            matrix[2] = s * m0 + c * m2;
+            matrix[4] = c * m4 - s * m6;
+            matrix[6] = s * m4 + c * m6;
+            matrix[8] = c * m8 - s * m10;
+            matrix[10] = s * m8 + c * m10;
+        }
+        
+        // Set up matrices
+        const projectionMatrix = createPerspectiveMatrix(
+            Math.PI / 4, canvas.width / canvas.height, 0.1, 100
+        );
+        
+        // Animation loop
+        let time = 0;
+        let mouseX = 0, mouseY = 0;
+        
+        function animate() {
+            time += 0.01;
+            
+            // Clear canvas
+            gl.clearColor(0.04, 0.04, 0.04, 1.0);
+            gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+            
+            // Create model view matrix
+            const modelViewMatrix = createIdentityMatrix();
+            modelViewMatrix[14] = -5; // Move back
+            
+            // Rotate based on time and mouse
+            rotateY(modelViewMatrix, time + mouseX * 0.01);
+            
+            // Set uniforms
+            gl.uniformMatrix4fv(modelViewMatrixLocation, false, modelViewMatrix);
+            gl.uniformMatrix4fv(projectionMatrixLocation, false, projectionMatrix);
+            gl.uniform1f(timeLocation, time);
+            
+            // Draw
+            gl.drawArrays(gl.LINE_STRIP, 0, vertices.length / 3);
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Start animation
+        gl.enable(gl.DEPTH_TEST);
+        animate();
+        
+        // Mouse tracking for WebGL (Vanilla JS)
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            // Vanilla JS cursor tracking fallback
+            const cursor = document.querySelector('.cursor');
+            const cursorTrail = document.querySelector('.cursor-trail');
+            if (cursor) {
+                cursor.style.left = (e.clientX - 10) + 'px';
+                cursor.style.top = (e.clientY - 10) + 'px';
+            }
+            if (cursorTrail) {
+                cursorTrail.style.left = (e.clientX - 5) + 'px';
+                cursorTrail.style.top = (e.clientY - 5) + 'px';
+            }
+        });
+        
+        // Ensure jQuery is loaded before running
+        function initjQuery() {
+            if (typeof jQuery === 'undefined') {
+                setTimeout(initjQuery, 50);
+                return;
+            }
+            
+            // jQuery functionality
+            $(document).ready(function() {
+            // Custom cursor
+            $(document).mousemove(function(e) {
+                $('.cursor').css({
+                    left: e.clientX - 10,
+                    top: e.clientY - 10
+                });
+                
+                $('.cursor-trail').css({
+                    left: e.clientX - 5,
+                    top: e.clientY - 5
+                });
+            });
+            
+            // Smooth scrolling
+            $('nav a').click(function(e) {
+                e.preventDefault();
+                const target = $(this).attr('href');
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top
+                }, 1000);
+            });
+            
+            // Theme toggle
+            $('#theme-toggle').click(function() {
+                $(this).toggleClass('active');
+                $('body').toggleClass('light-mode');
+            });
+            
+            // Audio toggle
+            let audioPlaying = false;
+            const audio = document.getElementById('bg-audio');
+            
+            $('#audio-toggle').click(function() {
+                $(this).toggleClass('active');
+                if (audioPlaying) {
+                    audio.pause();
+                } else {
+                    audio.play();
+                }
+                audioPlaying = !audioPlaying;
+            });
+            
+            // Skill bars animation
+            $(window).scroll(function() {
+                const skillsTop = $('#about').offset().top;
+                const windowBottom = $(window).scrollTop() + $(window).height();
+                
+                if (windowBottom > skillsTop + 200) {
+                    $('.skill-fill').each(function() {
+                        const skill = $(this).data('skill');
+                        $(this).css('width', skill + '%');
+                    });
+                }
+            });
+            
+            // Project modal
+            $('.project-card').click(function() {
+                const projectId = $(this).data('project');
+                const title = $(this).find('h3').text();
+                const content = `
+                    <p>This is a detailed view of ${title}.</p>
+                    <p style="margin-top: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Fusce in retro-futuristic design elements with neon aesthetics.</p>
+                    <div style="margin-top: 30px;">
+                        <a href="#" style="color: var(--neon-blue); text-decoration: none; margin-right: 20px;">
+                            VIEW LIVE →
+                        </a>
+                        <a href="#" style="color: var(--neon-purple); text-decoration: none;">
+                            SOURCE CODE →
+                        </a>
+                    </div>
+                `;
+                
+                $('#modal-title').text(title);
+                $('#modal-body').html(content);
+                $('#project-modal').css('display', 'flex');
+            });
+            
+            // Close modal
+            $('.close-modal, .modal').click(function(e) {
+                if (e.target === this) {
+                    $('#project-modal').hide();
+                }
+            });
+            
+            // Form submission
+            $('.retro-form').submit(function(e) {
+                e.preventDefault();
+                alert('MESSAGE TRANSMITTED SUCCESSFULLY!');
+                this.reset();
+            });
+            
+            // Audio visualizer animation
+            setInterval(function() {
+                $('.bar').each(function() {
+                    const height = Math.random() * 40 + 10;
+                    $(this).css('height', height + 'px');
+                });
+            }, 200);
+            
+            // Glitch effect on hover
+            $('.project-card').hover(
+                function() {
+                    $(this).css('animation', 'glitch 0.3s infinite');
+                },
+                function() {
+                    $(this).css('animation', 'none');
+                }
+            );
+        });
+        }
+        
+        // Initialize jQuery when ready
+        initjQuery();
+    </script>
+</body>
+</html>
