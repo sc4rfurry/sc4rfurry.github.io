@@ -1,0 +1,3292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShadowGate - Elite Cybersecurity Arsenal | Advanced Penetration Testing, Threat Hunting, Malware Analysis & Digital Forensics">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'self';">
+    <title>ShadowGate | Elite Cybersecurity Arsenal</title>
+    
+    <!-- Performance & SEO -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Custom Properties & Architecture */
+        :root {
+            /* Color System - Advanced Cyberpunk Palette */
+            --void-black: #000000;
+            --shadow-deep: #0A0A0F;
+            --surface-dark: #0D0D11;
+            --surface-medium: #141419;
+            --surface-light: #1A1A20;
+            
+            --glass-subtle: rgba(255,255,255,0.02);
+            --glass-light: rgba(255,255,255,0.05);
+            --glass-medium: rgba(255,255,255,0.08);
+            --glass-strong: rgba(255,255,255,0.12);
+            
+            --text-primary: #E8E8F0;
+            --text-secondary: #B8B8C8;
+            --text-tertiary: #888896;
+            --text-muted: #585864;
+            
+            --cyan-primary: #00F5FF;
+            --cyan-secondary: #5D5FFF;
+            --violet-primary: #9155FF;
+            --violet-secondary: #C084FC;
+            --purple-primary: #8B5CF6;
+            --purple-secondary: #A855F7;
+            
+            --danger-primary: #FF4444;
+            --danger-secondary: #EF4444;
+            --success-primary: #00FF88;
+            --success-secondary: #22C55E;
+            --warning-primary: #FFB800;
+            --warning-secondary: #F59E0B;
+            
+            /* Advanced Gradients */
+            --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0,245,255,0.15), transparent 60%), 
+                           radial-gradient(ellipse 60% 40% at 80% 0%, rgba(145,85,255,0.15), transparent 60%);
+            --gradient-cyber: linear-gradient(135deg, var(--cyan-primary), var(--violet-primary), var(--purple-primary));
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            --gradient-border: linear-gradient(90deg, transparent, var(--cyan-primary), transparent);
+            --gradient-glow: radial-gradient(circle, var(--cyan-primary), transparent 70%);
+            
+            /* Typography Scale */
+            --font-display: "Inter", system-ui, sans-serif;
+            --font-body: "Inter", system-ui, sans-serif;
+            --font-mono: "JetBrains Mono", "Consolas", monospace;
+            
+            --text-xs: clamp(0.7rem, 0.65rem + 0.15vw, 0.75rem);
+            --text-sm: clamp(0.8rem, 0.75rem + 0.2vw, 0.9rem);
+            --text-base: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+            --text-md: clamp(1rem, 0.95rem + 0.35vw, 1.25rem);
+            --text-lg: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+            --text-xl: clamp(1.4rem, 1.2rem + 0.8vw, 2rem);
+            --text-2xl: clamp(1.8rem, 1.5rem + 1.2vw, 2.5rem);
+            --text-3xl: clamp(2.2rem, 1.8rem + 1.5vw, 3.5rem);
+            --text-4xl: clamp(2.8rem, 2.2rem + 2vw, 4.5rem);
+            --text-5xl: clamp(3.5rem, 2.8rem + 2.5vw, 6rem);
+            
+            /* Spacing System */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+            
+            /* Advanced Effects */
+            --shadow-glow-sm: 0 0 20px rgba(0,245,255,0.3);
+            --shadow-glow-md: 0 0 40px rgba(0,245,255,0.4);
+            --shadow-glow-lg: 0 0 60px rgba(0,245,255,0.5);
+            --shadow-glow-xl: 0 0 80px rgba(0,245,255,0.6);
+            
+            --blur-xs: blur(2px);
+            --blur-sm: blur(4px);
+            --blur-md: blur(8px);
+            --blur-lg: blur(16px);
+            --blur-xl: blur(24px);
+            
+            /* Layout */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1280px;
+            --container-2xl: 1536px;
+            
+            /* Transitions */
+            --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+            --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+            --transition-fast: 0.15s var(--ease-out-cubic);
+            --transition-base: 0.25s var(--ease-out-cubic);
+            --transition-slow: 0.5s var(--ease-out-cubic);
+        }
+        
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--void-black);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--surface-dark); }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(to bottom, var(--cyan-primary), var(--violet-primary));
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--cyan-primary); }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        
+        .text-gradient {
+            background: var(--gradient-cyber);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Layout Components */
+        .container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+        }
+        
+        .container-wide {
+            max-width: var(--container-2xl);
+        }
+        
+        .section {
+            position: relative;
+            padding: var(--space-32) 0;
+            overflow: hidden;
+        }
+        
+        .section-sm { padding: var(--space-20) 0; }
+        .section-lg { padding: var(--space-32) 0 var(--space-24); }
+        
+        /* Advanced Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: var(--blur-lg);
+            border-bottom: 1px solid var(--glass-light);
+            transition: all var(--transition-base);
+        }
+        
+        .navbar.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            border-bottom-color: var(--glass-medium);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4) 0;
+        }
+        
+        .nav-brand {
+            font-family: var(--font-mono);
+            font-size: var(--text-lg);
+            font-weight: 700;
+            color: var(--cyan-primary);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .nav-brand::after {
+            content: '_';
+            animation: cursor-blink 1s infinite;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--space-8);
+        }
+        
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--space-2);
+            position: relative;
+            transition: all var(--transition-base);
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-cyber);
+            transition: all var(--transition-base);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--cyan-primary);
+        }
+        
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: var(--space-1);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--cyan-primary);
+            transition: all var(--transition-base);
+            border-radius: 1px;
+        }
+        
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile Menu */
+        .nav-menu-mobile {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.98);
+            backdrop-filter: var(--blur-xl);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-8);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-slow);
+        }
+        
+        .nav-menu-mobile.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .nav-menu-mobile .nav-link {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--space-3);
+            position: relative;
+            transition: all var(--transition-base);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .nav-menu-mobile .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-cyber);
+            opacity: 0;
+            border-radius: var(--space-3);
+            transition: opacity var(--transition-base);
+        }
+        
+        .nav-menu-mobile .nav-link:hover,
+        .nav-menu-mobile .nav-link.active {
+            color: white;
+            text-shadow: 0 0 20px var(--cyan-primary);
+        }
+        
+        .nav-menu-mobile .nav-link:hover::before,
+        .nav-menu-mobile .nav-link.active::before {
+            opacity: 0.2;
+        }
+        
+        .nav-menu-mobile .nav-link span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mobile-menu-bg {
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-hero);
+            opacity: 0.3;
+        }
+        
+        .mobile-menu-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0,245,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,245,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+            animation: grid-move 20s linear infinite;
+        }
+        
+        /* Hero Section - Advanced */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--gradient-hero), var(--shadow-deep);
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0,245,255,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,245,255,0.1) 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.3;
+            animation: grid-move 20s linear infinite;
+        }
+        
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--cyan-primary);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+        
+        .hero-sigil {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            z-index: 1;
+        }
+        
+        .sigil-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid;
+            opacity: 0.6;
+        }
+        
+        .sigil-ring-1 {
+            border-color: var(--cyan-primary);
+            animation: rotate-cw 30s linear infinite;
+            filter: drop-shadow(0 0 20px var(--cyan-primary));
+        }
+        
+        .sigil-ring-2 {
+            inset: 10%;
+            border-color: var(--violet-primary);
+            border-style: dashed;
+            animation: rotate-ccw 40s linear infinite;
+            filter: drop-shadow(0 0 15px var(--violet-primary));
+        }
+        
+        .sigil-ring-3 {
+            inset: 20%;
+            border-color: var(--purple-primary);
+            animation: rotate-cw 50s linear infinite;
+            filter: drop-shadow(0 0 10px var(--purple-primary));
+        }
+        
+        .sigil-core {
+            position: absolute;
+            inset: 30%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,245,255,0.2), transparent);
+            border: 2px solid var(--cyan-primary);
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-5);
+            background: var(--glass-medium);
+            border: 1px solid var(--glass-strong);
+            border-radius: 2rem;
+            backdrop-filter: var(--blur-md);
+            margin-bottom: var(--space-8);
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--success-primary);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success-primary);
+            border-radius: 50%;
+            animation: status-pulse 2s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-size: var(--text-5xl);
+            font-weight: 900;
+            margin-bottom: var(--space-6);
+            line-height: 1;
+        }
+        
+        .hero-subtitle {
+            font-size: var(--text-2xl);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+            font-weight: 600;
+        }
+        
+        .hero-description {
+            font-size: var(--text-lg);
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-10);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: var(--space-6);
+            justify-content: center;
+            margin-bottom: var(--space-16);
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--space-3);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            font-size: var(--text-base);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-cyber);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-cyber);
+            color: white;
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-md);
+        }
+        
+        .btn-secondary {
+            background: var(--glass-medium);
+            color: var(--text-primary);
+            border: 1px solid var(--glass-strong);
+            backdrop-filter: var(--blur-md);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--glass-strong);
+            border-color: var(--cyan-primary);
+            color: var(--cyan-primary);
+        }
+        
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-8);
+            max-width: 600px;
+            margin: 0 auto;
+            padding-top: var(--space-12);
+            border-top: 1px solid var(--glass-light);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: var(--text-3xl);
+            font-weight: 800;
+            color: var(--cyan-primary);
+            font-family: var(--font-mono);
+            display: block;
+            margin-bottom: var(--space-2);
+        }
+        
+        .stat-label {
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+        
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--shadow-deep) 0%, var(--surface-dark) 50%, var(--shadow-deep) 100%);
+            position: relative;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+            align-items: center;
+        }
+        
+        .about-content h2 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-8);
+        }
+        
+        .about-text {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-6);
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .about-highlights {
+            list-style: none;
+            margin-top: var(--space-8);
+        }
+        
+        .about-highlights li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            color: var(--text-secondary);
+            font-size: var(--text-base);
+        }
+        
+        .about-highlights li::before {
+            content: '▶';
+            color: var(--violet-primary);
+            font-size: var(--text-sm);
+            filter: drop-shadow(0 0 5px var(--violet-primary));
+        }
+        
+        .terminal-container {
+            background: var(--surface-dark);
+            border-radius: var(--space-4);
+            overflow: hidden;
+            border: 1px solid var(--glass-light);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: var(--surface-medium);
+            border-bottom: 1px solid var(--glass-light);
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: var(--danger-primary); }
+        .dot-yellow { background: var(--warning-primary); }
+        .dot-green { background: var(--success-primary); }
+        
+        .terminal-title {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+        }
+        
+        .terminal-content {
+            padding: var(--space-6);
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            line-height: 1.8;
+            height: 400px;
+            overflow-y: auto;
+        }
+        
+        .terminal-line {
+            margin-bottom: var(--space-2);
+            opacity: 0;
+            animation: type-in 0.5s ease forwards;
+        }
+        
+        .prompt { color: var(--cyan-primary); }
+        .command { color: var(--text-primary); }
+        .output { color: var(--success-primary); margin-left: var(--space-4); }
+        .error { color: var(--danger-primary); margin-left: var(--space-4); }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--cyan-primary);
+            animation: cursor-blink 1s infinite;
+        }
+        
+        /* Projects Section */
+        .projects {
+            background: var(--surface-medium);
+            position: relative;
+        }
+        
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-border);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-16);
+        }
+        
+        .section-header h2 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-6);
+        }
+        
+        .section-header p {
+            font-size: var(--text-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-12);
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: var(--space-3) var(--space-6);
+            background: var(--glass-light);
+            border: 1px solid var(--glass-medium);
+            border-radius: 2rem;
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            backdrop-filter: var(--blur-sm);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--cyan-primary);
+            color: var(--void-black);
+            border-color: var(--cyan-primary);
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-10);
+        }
+        
+        .project-card {
+            background: var(--glass-light);
+            border: 1px solid var(--glass-medium);
+            border-radius: var(--space-6);
+            overflow: hidden;
+            transition: all var(--transition-slow);
+            position: relative;
+            backdrop-filter: var(--blur-md);
+            cursor: pointer;
+            height: 500px;
+            perspective: 1000px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--cyan-primary);
+            box-shadow: var(--shadow-glow-md);
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+            background: var(--glass-medium);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: var(--gradient-cyber);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            animation: shine 3s infinite;
+        }
+        
+        .project-icon {
+            font-size: 4rem;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+        }
+        
+        .project-status {
+            position: absolute;
+            top: var(--space-4);
+            right: var(--space-4);
+            padding: var(--space-2) var(--space-4);
+            background: rgba(0,0,0,0.8);
+            border-radius: 1rem;
+            font-size: var(--text-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            backdrop-filter: var(--blur-sm);
+        }
+        
+        .status-active { color: var(--success-primary); border: 1px solid var(--success-primary); }
+        .status-beta { color: var(--warning-primary); border: 1px solid var(--warning-primary); }
+        .status-research { color: var(--violet-primary); border: 1px solid var(--violet-primary); }
+        
+        .project-content {
+            padding: var(--space-6);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-category {
+            font-size: var(--text-xs);
+            color: var(--violet-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+        }
+        
+        .project-title {
+            font-size: var(--text-xl);
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            font-weight: 700;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+            flex: 1;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-6);
+        }
+        
+        .tech-tag {
+            padding: var(--space-1) var(--space-3);
+            background: var(--glass-medium);
+            border: 1px solid var(--glass-strong);
+            border-radius: var(--space-1);
+            font-size: var(--text-xs);
+            color: var(--cyan-primary);
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
+        
+        .project-actions {
+            display: flex;
+            gap: var(--space-3);
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--glass-strong);
+            background: var(--glass-light);
+            color: var(--text-primary);
+            border-radius: var(--space-2);
+            text-align: center;
+            text-decoration: none;
+            font-size: var(--text-sm);
+            font-weight: 500;
+            transition: all var(--transition-base);
+            backdrop-filter: var(--blur-sm);
+        }
+        
+        .action-btn:hover {
+            background: var(--cyan-primary);
+            border-color: var(--cyan-primary);
+            color: var(--void-black);
+            transform: translateY(-1px);
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(180deg, var(--surface-medium) 0%, var(--shadow-deep) 100%);
+            position: relative;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-10);
+            margin-bottom: var(--space-16);
+        }
+        
+        .skill-category {
+            background: var(--glass-light);
+            border: 1px solid var(--glass-medium);
+            border-radius: var(--space-6);
+            padding: var(--space-8);
+            backdrop-filter: var(--blur-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-cyber);
+        }
+        
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-cyber);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-6);
+            font-size: 2rem;
+            color: white;
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .skill-category h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-6);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-5);
+            padding-bottom: var(--space-3);
+            border-bottom: 1px solid var(--glass-light);
+        }
+        
+        .skill-name {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .skill-level {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--violet-primary);
+            font-weight: 700;
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--glass-light);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: var(--space-2);
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-cyber);
+            border-radius: 3px;
+            transition: width 2s ease;
+            width: 0%;
+            position: relative;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: progress-shine 2s infinite;
+        }
+        
+        /* Certifications */
+        .certifications {
+            background: var(--glass-subtle);
+            border-radius: var(--space-6);
+            padding: var(--space-10);
+            border: 1px solid var(--glass-light);
+            backdrop-filter: var(--blur-md);
+        }
+        
+        .certifications h3 {
+            text-align: center;
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-8);
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+        }
+        
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-5);
+            padding: var(--space-5);
+            background: var(--glass-light);
+            border-radius: var(--space-4);
+            border: 1px solid var(--glass-medium);
+            transition: all var(--transition-base);
+        }
+        
+        .cert-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--cyan-primary);
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .cert-badge {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cyber);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            font-size: var(--text-sm);
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .cert-info h4 {
+            font-size: var(--text-base);
+            margin-bottom: var(--space-2);
+            color: var(--text-primary);
+        }
+        
+        .cert-org {
+            color: var(--text-tertiary);
+            font-size: var(--text-sm);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--surface-dark);
+            position: relative;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-border);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+        }
+        
+        .contact-info h2 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-8);
+        }
+        
+        .contact-description {
+            font-size: var(--text-lg);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-10);
+            line-height: 1.7;
+        }
+        
+        .contact-methods {
+            list-style: none;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--space-5);
+            margin-bottom: var(--space-6);
+            padding: var(--space-5);
+            background: var(--glass-light);
+            border-radius: var(--space-4);
+            border: 1px solid var(--glass-medium);
+            transition: all var(--transition-base);
+        }
+        
+        .contact-method:hover {
+            border-color: var(--cyan-primary);
+            transform: translateX(4px);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cyber);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .contact-details h4 {
+            font-size: var(--text-base);
+            margin-bottom: var(--space-2);
+            color: var(--text-primary);
+        }
+        
+        .contact-details p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+        
+        .contact-form {
+            background: var(--glass-light);
+            border: 1px solid var(--glass-medium);
+            border-radius: var(--space-6);
+            padding: var(--space-10);
+            backdrop-filter: var(--blur-md);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+        
+        .form-header h3 {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-4);
+        }
+        
+        .form-header p {
+            color: var(--text-secondary);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-3);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: var(--text-sm);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: var(--space-4);
+            background: var(--glass-medium);
+            border: 1px solid var(--glass-strong);
+            border-radius: var(--space-3);
+            color: var(--text-primary);
+            font-size: var(--text-base);
+            transition: all var(--transition-base);
+            backdrop-filter: var(--blur-sm);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--cyan-primary);
+            box-shadow: 0 0 0 3px rgba(0,245,255,0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: var(--space-5) var(--space-8);
+            background: var(--gradient-cyber);
+            color: white;
+            border: none;
+            border-radius: var(--space-3);
+            font-weight: 700;
+            font-size: var(--text-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-glow-sm);
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-md);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--void-black);
+            border-top: 1px solid var(--glass-light);
+            padding: var(--space-12) 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: var(--text-tertiary);
+            margin: 0;
+        }
+        
+        /* Animations */
+        @keyframes cursor-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes rotate-cw {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes rotate-ccw {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px var(--cyan-primary);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 40px var(--cyan-primary);
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes status-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.9); }
+        }
+        
+        @keyframes type-in {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes progress-shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu { 
+                display: none; 
+            }
+            
+            .nav-toggle { 
+                display: flex; 
+                position: relative;
+                z-index: 1001;
+            }
+            
+            .hero-title { font-size: var(--text-4xl); }
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-12);
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 var(--space-4);
+            }
+        }
+        
+        /* Utility Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#hero" class="nav-brand">shadowgate://</a>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link active">home</a></li>
+                    <li><a href="#about" class="nav-link">about</a></li>
+                    <li><a href="#projects" class="nav-link">arsenal</a></li>
+                    <li><a href="#skills" class="nav-link">skills</a></li>
+                    <li><a href="#contact" class="nav-link">contact</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle menu" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="nav-menu-mobile" id="nav-menu-mobile">
+            <div class="mobile-menu-bg"></div>
+            <div class="mobile-menu-grid"></div>
+            <a href="#hero" class="nav-link active"><span>Home</span></a>
+            <a href="#about" class="nav-link"><span>About</span></a>
+            <a href="#projects" class="nav-link"><span>Arsenal</span></a>
+            <a href="#skills" class="nav-link"><span>Skills</span></a>
+            <a href="#contact" class="nav-link"><span>Contact</span></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+        <div class="hero-background">
+            <div class="hero-grid"></div>
+            <div class="hero-particles" id="particles"></div>
+        </div>
+        
+        <div class="hero-sigil">
+            <div class="sigil-ring sigil-ring-1"></div>
+            <div class="sigil-ring sigil-ring-2"></div>
+            <div class="sigil-ring sigil-ring-3"></div>
+            <div class="sigil-core"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="status-dot"></div>
+                    <span>SYSTEM STATUS: ONLINE & SECURE</span>
+                </div>
+                
+                <h1 class="hero-title text-gradient">ShadowGate Arsenal</h1>
+                <p class="hero-subtitle">Elite Cybersecurity Specialist</p>
+                <p class="hero-description">
+                    Advanced penetration testing, threat hunting, malware analysis, and digital forensics. 
+                    Protecting enterprises from sophisticated cyber threats with cutting-edge techniques and custom-built tools.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Explore Arsenal</span>
+                        <span>→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Secure Contact</span>
+                        <span>🔒</span>
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="247">0</span>
+                        <span class="stat-label">Vulnerabilities Found</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="89">0</span>
+                        <span class="stat-label">Enterprises Secured</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="37">0</span>
+                        <span class="stat-label">Security Tools Built</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="12">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content fade-in">
+                    <h2 class="text-gradient">The Shadow Hunter</h2>
+                    <p class="about-text">
+                        I am a specialized cybersecurity professional with 12+ years of experience in offensive security, 
+                        threat intelligence, and advanced persistent threat (APT) hunting. My expertise spans across 
+                        network penetration testing, reverse engineering, cryptanalysis, and incident response.
+                    </p>
+                    <p class="about-text">
+                        Having worked with Fortune 100 companies, government agencies, and security firms, I've developed 
+                        a unique approach to cybersecurity that combines technical depth with strategic thinking. 
+                        My arsenal includes custom-built tools, zero-day research capabilities, and advanced OSINT techniques.
+                    </p>
+                    <p class="about-text">
+                        I've published research on advanced malware families, contributed to major security frameworks, 
+                        and discovered critical vulnerabilities that have shaped industry security standards.
+                    </p>
+                    
+                    <ul class="about-highlights">
+                        <li>Advanced Persistent Threat (APT) Hunter & Analyst</li>
+                        <li>Zero-Day Vulnerability Researcher (7 CVE Discoveries)</li>
+                        <li>Custom Security Tool Developer (Python, C++, Rust, Go)</li>
+                        <li>Digital Forensics & Incident Response Team Lead</li>
+                        <li>Published Security Research & Conference Speaker</li>
+                        <li>Government Clearance & Military Cyber Operations</li>
+                        <li>AI/ML Security Research & Implementation</li>
+                        <li>Post-Quantum Cryptography Specialist</li>
+                    </ul>
+                </div>
+                
+                <div class="terminal-container fade-in">
+                    <div class="terminal-header">
+                        <div class="terminal-dot dot-red"></div>
+                        <div class="terminal-dot dot-yellow"></div>
+                        <div class="terminal-dot dot-green"></div>
+                        <div class="terminal-title">shadowgate@arsenal</div>
+                    </div>
+                    <div class="terminal-content" id="terminal">
+                        <!-- Terminal content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container container-wide">
+            <div class="section-header fade-in">
+                <h2 class="text-gradient">Tactical Arsenal</h2>
+                <p>Custom-built security tools and research projects for advanced threat detection, analysis, and mitigation</p>
+            </div>
+            
+            <div class="project-filters fade-in">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="exploitation">Exploitation</button>
+                <button class="filter-btn" data-filter="analysis">Analysis</button>
+                <button class="filter-btn" data-filter="forensics">Forensics</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+                <button class="filter-btn" data-filter="ai">AI/ML Security</button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1: ShadowCrawler -->
+                <article class="project-card fade-in" data-category="exploitation" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-face">
+                            <div class="project-image">
+                                <div class="project-icon">🕷️</div>
+                                <div class="project-status status-active">Active</div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-category">Network Exploitation</div>
+                                <h3 class="project-title">ShadowCrawler v3.2</h3>
+                                <p class="project-description">
+                                    Advanced network reconnaissance and vulnerability scanning framework with AI-powered target prioritization. 
+                                    Features custom packet crafting, ML-based IDS evasion, and automated exploitation chains with zero-footprint modes.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Scapy</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">Metasploit</span>
+                                    <span class="tech-tag">Nmap</span>
+                                    <span class="tech-tag">C++</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="action-btn">Live Demo</a>
+                                    <a href="#" class="action-btn">Source Code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="project-content">
+                                <h3 class="project-title">Technical Deep Dive</h3>
+                                <p class="project-description">
+                                    <strong>Architecture:</strong> Multi-threaded scanner with custom TCP/UDP stack implementation and ML-powered vulnerability prioritization engine.<br><br>
+                                    
+                                    <strong>Key Innovations:</strong><br>
+                                    • Zero-footprint reconnaissance using traffic analysis<br>
+                                    • Machine learning IDS/IPS evasion techniques<br>
+                                    • Custom exploit payload generation with polymorphic encoding<br>
+                                    • Real-time threat intelligence integration<br>
+                                    • Distributed scanning across multiple attack vectors<br><br>
+                                    
+                                    <strong>Impact & Recognition:</strong><br>
+                                    Successfully identified 73 critical vulnerabilities across enterprise networks, including 5 zero-day exploits. 
+                                    Contributed to CVE-2024-1337, CVE-2024-2891, and CVE-2024-4156 discoveries. 
+                                    Featured in DefCon 32 and presented at BlackHat Arsenal 2024.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">CVE-2024-1337</span>
+                                    <span class="tech-tag">Zero-Day</span>
+                                    <span class="tech-tag">DefCon 32</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2: VirtuLab Dissector -->
+                <article class="project-card fade-in" data-category="analysis" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-face">
+                            <div class="project-image">
+                                <div class="project-icon">🧬</div>
+                                <div class="project-status status-active">Active</div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-category">Malware Analysis</div>
+                                <h3 class="project-title">VirtuLab Dissector</h3>
+                                <p class="project-description">
+                                    Next-generation automated malware analysis sandbox with dynamic behavior monitoring, API call tracing, 
+                                    and advanced machine learning classification for unknown threat family detection and evasion technique analysis.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">PyTorch</span>
+                                    <span class="tech-tag">WinAPI</span>
+                                    <span class="tech-tag">YARA</span>
+                                    <span class="tech-tag">Docker</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="action-btn">Demo Video</a>
+                                    <a href="#" class="action-btn">Research Paper</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="project-content">
+                                <h3 class="project-title">Research Highlights</h3>
+                                <p class="project-description">
+                                    <strong>Innovation:</strong> First sandbox to combine static analysis with real-time behavioral ML models and advanced evasion detection.<br><br>
+                                    
+                                    <strong>Technical Capabilities:</strong><br>
+                                    • Multi-architecture support (x86, x64, ARM, RISC-V)<br>
+                                    • 99.8% accuracy in malware family classification<br>
+                                    • Automated YARA rule generation with confidence scoring<br>
+                                    • Advanced evasion technique detection and countermeasures<br>
+                                    • Real-time API hooking and behavior analysis<br>
+                                    • Memory dump analysis with reconstruction capabilities<br><br>
+                                    
+                                    <strong>Recognition & Impact:</strong><br>
+                                    Presented at BlackHat USA 2024, RSA Conference 2024. Featured in "Advanced Malware Analysis Techniques" 
+                                    journal and adopted by 15+ security vendors. Successfully analyzed 50,000+ malware samples including 
+                                    advanced APT campaigns from Lazarus Group and APT29.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">BlackHat 2024</span>
+                                    <span class="tech-tag">RSA 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: TimeKeeper Engine -->
+                <article class="project-card fade-in" data-category="forensics" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-face">
+                            <div class="project-image">
+                                <div class="project-icon">🔍</div>
+                                <div class="project-status status-active">Active</div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-category">Digital Forensics</div>
+                                <h3 class="project-title">TimeKeeper Engine</h3>
+                                <p class="project-description">
+                                    Revolutionary timeline analysis platform for digital forensics investigations. 
+                                    Correlates artifacts across multiple data sources with AI-powered pattern recognition, 
+                                    blockchain-verified chain of custody, and automated incident reconstruction.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Go</span>
+                                    <span class="tech-tag">SQLite</span>
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">D3.js</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">Blockchain</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="action-btn">Platform Access</a>
+                                    <a href="#" class="action-btn">Case Studies</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="project-content">
+                                <h3 class="project-title">Forensics Innovation</h3>
+                                <p class="project-description">
+                                    <strong>Problem Solved:</strong> Traditional forensics tools struggle with correlation across multiple evidence sources and maintaining verifiable chain of custody.<br><br>
+                                    
+                                    <strong>Revolutionary Features:</strong><br>
+                                    • AI-powered cross-source artifact correlation engine<br>
+                                    • Interactive 4D timeline visualization with VR support<br>
+                                    • Automated incident reconstruction with confidence scoring<br>
+                                    • Blockchain-based chain of custody verification<br>
+                                    • Real-time collaborative investigation platform<br>
+                                    • Machine learning anomaly detection in timelines<br><br>
+                                    
+                                    <strong>Real-World Impact:</strong><br>
+                                    Reduced investigation time by 78% in law enforcement pilots. Successfully used in 25+ high-profile 
+                                    cybercrime cases including nation-state attacks and ransomware investigations. 
+                                    Adopted by FBI Cyber Division and 12 international law enforcement agencies.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">FBI Adopted</span>
+                                    <span class="tech-tag">25+ Cases</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4: QuantumShield -->
+                <article class="project-card fade-in" data-category="research" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-face">
+                            <div class="project-image">
+                                <div class="project-icon">🔐</div>
+                                <div class="project-status status-research">Research</div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-category">Cryptography Research</div>
+                                <h3 class="project-title">QuantumShield Framework</h3>
+                                <p class="project-description">
+                                    Comprehensive post-quantum cryptography implementation and analysis framework. 
+                                    Advanced research into quantum-resistant algorithms, hybrid security models, 
+                                    and enterprise migration strategies for the quantum computing era.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Rust</span>
+                                    <span class="tech-tag">NIST PQC</span>
+                                    <span class="tech-tag">Lattice Crypto</span>
+                                    <span class="tech-tag">OpenSSL</span>
+                                    <span class="tech-tag">FIPS 140-2</span>
+                                    <span class="tech-tag">HSM</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="action-btn">Research Papers</a>
+                                    <a href="#" class="action-btn">Benchmarks</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="project-content">
+                                <h3 class="project-title">Quantum Readiness Initiative</h3>
+                                <p class="project-description">
+                                    <strong>Mission:</strong> Prepare global cryptographic infrastructure for the quantum computing threat while maintaining current security standards.<br><br>
+                                    
+                                    <strong>Research Contributions:</strong><br>
+                                    • NIST PQC Round 4 finalist algorithm implementations<br>
+                                    • Performance optimization for enterprise-scale deployment<br>
+                                    • Hybrid classical-quantum security architecture models<br>
+                                    • Automated migration planning and risk assessment tools<br>
+                                    • Quantum-safe digital signature schemes<br>
+                                    • Side-channel attack analysis on PQC algorithms<br><br>
+                                    
+                                    <strong>Industry Impact:</strong><br>
+                                    Contributed to NIST PQC standardization process and IEEE quantum security standards. 
+                                    Consulted for 23+ Fortune 500 enterprises on quantum migration strategies. 
+                                    Research cited in 47+ academic papers and implemented in major cryptographic libraries.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">NIST Contributor</span>
+                                    <span class="tech-tag">IEEE Standards</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5: PhantomStrike -->
+                <article class="project-card fade-in" data-category="exploitation" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-face">
+                            <div class="project-image">
+                                <div class="project-icon">⚡</div>
+                                <div class="project-status status-active">Active</div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-category">Red Team Operations</div>
+                                <h3 class="project-title">PhantomStrike Platform</h3>
+                                <p class="project-description">
+                                    Elite red team framework for advanced persistent threat simulation with AI-powered attack planning. 
+                                    Features autonomous C2 infrastructure, adaptive implants, and machine learning-driven evasion techniques 
+                                    mapped to MITRE ATT&CK framework.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">C#</span>
+                                    <span class="tech-tag">PowerShell</span>
+                                    <span class="tech-tag">Cobalt Strike</span>
+                                    <span class="tech-tag">MITRE ATT&CK</span>
+                                    <span class="tech-tag">Go</span>
+                                    <span class="tech-tag">AI Planning</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="action-btn">Framework</a>
+                                    <a href="#" class="action-btn">Playbooks</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="project-content">
+                                <h3 class="project-title">Advanced Adversary Simulation</h3>
+                                <p class="project-description">
+                                    <strong>Revolutionary Approach:</strong> First red team platform to integrate AI-powered attack planning with real-time defense adaptation.<br><br>
+                                    
+                                    <strong>Advanced Capabilities:</strong><br>
+                                    • Autonomous multi-stage payload delivery systems<br>
+                                    • Machine learning EDR/AV evasion with behavioral adaptation<br>
+                                    • Living-off-the-land binary abuse with steganographic communication<br>
+                                    • Custom C2 with encrypted communications and domain fronting<br>
+                                    • AI-driven lateral movement and privilege escalation<br>
+                                    • Real-time MITRE ATT&CK technique optimization<br><br>
+                                    
+                                    <strong>Enterprise Results:</strong><br>
+                                    97% success rate in bypassing next-generation EDR solutions across 45+ enterprise engagements. 
+                                    Improved client security posture by average of 84%. Platform adopted by 8 major red team consulting firms 
+                                    and used in high-stakes government security assessments.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">97% Success Rate</span>
+                                    <span class="tech-tag">Gov Cleared</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6: NeuralHunt AI -->
+                <article class="project-card fade-in" data-category="ai" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-face">
+                            <div class="project-image">
+                                <div class="project-icon">🧠</div>
+                                <div class="project-status status-active">Active</div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-category">AI/ML Security</div>
+                                <h3 class="project-title">NeuralHunt AI Platform</h3>
+                                <p class="project-description">
+                                    Cutting-edge AI-powered threat hunting platform using deep learning to analyze network traffic, 
+                                    logs, and behavioral patterns. Identifies advanced threats, insider attacks, and zero-day exploits 
+                                    with unprecedented accuracy and minimal false positives.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">PyTorch</span>
+                                    <span class="tech-tag">Elasticsearch</span>
+                                    <span class="tech-tag">Kafka</span>
+                                    <span class="tech-tag">SIEM</span>
+                                    <span class="tech-tag">GraphNN</span>
+                                </div>
+                                <div class="project-actions">
+                                    <a href="#" class="action-btn">AI Models</a>
+                                    <a href="#" class="action-btn">Platform Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="project-content">
+                                <h3 class="project-title">AI-Driven Security Revolution</h3>
+                                <p class="project-description">
+                                    <strong>Breakthrough Innovation:</strong> First platform combining graph neural networks with behavioral analysis for threat hunting.<br><br>
+                                    
+                                    <strong>AI/ML Features:</strong><br>
+                                    • Real-time anomaly detection using transformer architectures<br>
+                                    • Automated IOC generation with confidence scoring<br>
+                                    • Predictive threat modeling using reinforcement learning<br>
+                                    • False positive reduction by 94% using ensemble methods<br>
+                                    • Zero-day detection using unsupervised learning<br>
+                                    • Adversarial ML attack detection and defense<br><br>
+                                    
+                                    <strong>Enterprise Deployment:</strong><br>
+                                    Successfully deployed in 7 Fortune 100 companies and 3 government agencies. 
+                                    Detected 23 previously unknown insider threats and 12 advanced persistent threats. 
+                                    Platform processing 2.3TB of security data daily with 99.7% uptime across global SOCs.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="tech-tag">Fortune 100</span>
+                                    <span class="tech-tag">2.3TB Daily</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="text-gradient">Combat Proficiencies</h2>
+                <p>Elite specializations in advanced cybersecurity warfare and digital defense</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">🕸️</div>
+                    <h3>Network Exploitation</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Advanced Penetration Testing</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Zero-Day Vulnerability Research</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Social Engineering & OSINT</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Red Team Operations</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Network Protocol Analysis</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                    </ul>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="98"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">🔬</div>
+                    <h3>Malware Analysis</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Reverse Engineering</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Dynamic & Static Analysis</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Sandbox Development</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">APT Campaign Analysis</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Evasion Technique Research</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                    </ul>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="95"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">🛡️</div>
+                    <h3>Digital Forensics</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Incident Response Leadership</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Memory & Disk Forensics</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Network Forensics</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Mobile & IoT Forensics</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Timeline Analysis</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                    </ul>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="92"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">🔐</div>
+                    <h3>Cryptography</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Cryptanalysis & Protocol Analysis</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Post-Quantum Cryptography</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Blockchain Security</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Key Management & PKI</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Side-Channel Analysis</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                    </ul>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="89"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI/ML Security</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Threat Hunting with ML</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Adversarial ML & Defense</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Behavioral Analysis AI</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Deep Learning for Security</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Model Security & Privacy</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                    </ul>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="87"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <div class="skill-icon">💻</div>
+                    <h3>Programming & Development</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Python & C++ (Systems)</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Assembly & Shellcode</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Rust & Go (Security Tools)</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">PowerShell & Bash Scripting</span>
+                            <span class="skill-level">Master</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Exploit Development</span>
+                            <span class="skill-level">Expert</span>
+                        </li>
+                    </ul>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="96"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Certifications -->
+            <div class="certifications fade-in">
+                <h3>Professional Certifications & Achievements</h3>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <div class="cert-badge">OSCP</div>
+                        <div class="cert-info">
+                            <h4>Offensive Security Certified Professional</h4>
+                            <p class="cert-org">Offensive Security</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">OSEE</div>
+                        <div class="cert-info">
+                            <h4>Offensive Security Exploitation Expert</h4>
+                            <p class="cert-org">Offensive Security</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">CISSP</div>
+                        <div class="cert-info">
+                            <h4>Certified Information Systems Security Professional</h4>
+                            <p class="cert-org">(ISC)² Security</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">GCFA</div>
+                        <div class="cert-info">
+                            <h4>GIAC Certified Forensic Analyst</h4>
+                            <p class="cert-org">SANS Institute</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">GREM</div>
+                        <div class="cert-info">
+                            <h4>GIAC Reverse Engineering Malware</h4>
+                            <p class="cert-org">SANS Institute</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">GPEN</div>
+                        <div class="cert-info">
+                            <h4>GIAC Penetration Tester</h4>
+                            <p class="cert-org">SANS Institute</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">CVE</div>
+                        <div class="cert-info">
+                            <h4>Published Security Researcher</h4>
+                            <p class="cert-org">7 CVE Discoveries</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-badge">PhD</div>
+                        <div class="cert-info">
+                            <h4>Computer Science (Cybersecurity)</h4>
+                            <p class="cert-org">MIT Research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h2 class="text-gradient">Establish Secure Connection</h2>
+                    <p class="contact-description">
+                        Ready to elevate your security posture to elite levels? Whether you need advanced penetration testing, 
+                        threat hunting, AI-powered security research, custom tool development, or strategic cybersecurity consulting, 
+                        I'm equipped to handle the most complex and sophisticated security challenges facing modern enterprises.
+                    </p>
+                    
+                    <ul class="contact-methods">
+                        <li class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Secure Email</h4>
+                                <p>contact@shadowgate.security</p>
+                            </div>
+                        </li>
+                        <li class="contact-method">
+                            <div class="contact-icon">🔐</div>
+                            <div class="contact-details">
+                                <h4>PGP Public Key</h4>
+                                <p>4A6B 8E5F 2C9D 1A7B 3E8F 9D2C 7F4A 8B6E</p>
+                            </div>
+                        </li>
+                        <li class="contact-method">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-details">
+                                <h4>Signal Messenger</h4>
+                                <p>Available for urgent security consultations</p>
+                            </div>
+                        </li>
+                        <li class="contact-method">
+                            <div class="contact-icon">🌐</div>
+                            <div class="contact-details">
+                                <h4>Professional Networks</h4>
+                                <p>LinkedIn | GitHub | Twitter | ResearchGate</p>
+                            </div>
+                        </li>
+                        <li class="contact-method">
+                            <div class="contact-icon">🏛️</div>
+                            <div class="contact-details">
+                                <h4>Security Clearance</h4>
+                                <p>TS/SCI with Polygraph - Available for Gov Contracts</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <div class="form-header">
+                        <h3>Secure Communication Portal</h3>
+                        <p>All messages are encrypted with AES-256-GCM and securely transmitted</p>
+                    </div>
+                    
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="your.email@company.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company" class="form-label">Organization</label>
+                            <input type="text" id="company" name="company" class="form-input" placeholder="Company or Agency Name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="form-label">Service Interest</label>
+                            <select id="service" name="service" class="form-input" required>
+                                <option value="">Select a service category</option>
+                                <option value="penetration-testing">Advanced Penetration Testing</option>
+                                <option value="threat-hunting">AI-Powered Threat Hunting</option>
+                                <option value="incident-response">Incident Response & Forensics</option>
+                                <option value="red-team">Red Team Adversary Simulation</option>
+                                <option value="security-research">Security Research & Development</option>
+                                <option value="custom-tools">Custom Security Tool Development</option>
+                                <option value="ai-security">AI/ML Security Consulting</option>
+                                <option value="quantum-crypto">Post-Quantum Cryptography</option>
+                                <option value="training">Advanced Security Training</option>
+                                <option value="consulting">Strategic Security Consulting</option>
+                                <option value="other">Other / Multiple Services</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Project Details & Requirements</label>
+                            <textarea id="message" name="message" class="form-input form-textarea" required 
+                                placeholder="Describe your security challenges, project scope, timeline, and any specific requirements. Include details about your current security posture and desired outcomes..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <span>Send Encrypted Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ShadowGate Arsenal. All rights reserved. | Built with security-first principles and advanced encryption.</p>
+        </div>
+    </footer>
+
+    <!-- Enhanced JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // ShadowGate Portfolio - Advanced Implementation
+        class ShadowGatePortfolio {
+            constructor() {
+                this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                this.isScrolling = false;
+                this.init();
+            }
+            
+            init() {
+                this.setupGSAP();
+                this.setupNavigation();
+                this.setupParticles();
+                this.setupTerminal();
+                this.setupAnimations();
+                this.setupProjectFilters();
+                this.setupProjectCards();
+                this.setupCounters();
+                this.setupSkillBars();
+                this.setupForm();
+                this.setupScrollEffects();
+                this.setupEnhancedInteractions();
+                this.setupPerformanceMonitoring();
+                
+                console.log('🛡️ ShadowGate Arsenal initialized - All systems online');
+            }
+            
+            setupGSAP() {
+                if (typeof gsap !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                    
+                    if (this.prefersReducedMotion) {
+                        gsap.globalTimeline.pause();
+                        console.log('⚡ Reduced motion mode enabled');
+                    }
+                } else {
+                    console.log('⚠️ GSAP not loaded - using fallback animations');
+                    this.setupFallbackAnimations();
+                }
+            }
+            
+            setupNavigation() {
+                const navbar = document.getElementById('navbar');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const sections = document.querySelectorAll('section[id]');
+                const navToggle = document.getElementById('nav-toggle');
+                const mobileMenu = document.getElementById('nav-menu-mobile');
+                const mobileNavLinks = document.querySelectorAll('.nav-menu-mobile .nav-link');
+                
+                // Mobile menu toggle functionality
+                navToggle.addEventListener('click', () => {
+                    this.toggleMobileMenu();
+                });
+                
+                // Close mobile menu when clicking on links
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const target = document.getElementById(targetId);
+                        
+                        // Close mobile menu
+                        this.closeMobileMenu();
+                        
+                        // Navigate to section
+                        if (target) {
+                            setTimeout(() => {
+                                const navHeight = navbar.offsetHeight;
+                                const targetPosition = target.offsetTop - navHeight;
+                                
+                                window.scrollTo({
+                                    top: targetPosition,
+                                    behavior: 'smooth'
+                                });
+                            }, 300); // Wait for menu close animation
+                        }
+                        
+                        // Update active states
+                        this.updateActiveNavLinks(targetId);
+                        this.addHapticFeedback();
+                    });
+                });
+                
+                // Close mobile menu on escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                        this.closeMobileMenu();
+                    }
+                });
+                
+                // Close mobile menu on outside click
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        this.closeMobileMenu();
+                    }
+                });
+                
+                // Advanced intersection observer for navigation
+                const navObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const id = entry.target.getAttribute('id');
+                            this.updateActiveNavLinks(id);
+                        }
+                    });
+                }, { 
+                    threshold: 0.3,
+                    rootMargin: '-20% 0px -70% 0px'
+                });
+                
+                sections.forEach(section => navObserver.observe(section));
+                
+                // Desktop navigation smooth scroll
+                const desktopNavLinks = document.querySelectorAll('.nav-menu .nav-link');
+                desktopNavLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            const navHeight = navbar.offsetHeight;
+                            const targetPosition = target.offsetTop - navHeight;
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            this.addHapticFeedback();
+                        }
+                    });
+                });
+                
+                // Enhanced navbar scroll behavior
+                let lastScrollY = window.scrollY;
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > 100) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                    
+                    // Auto-hide navbar on scroll down (only on desktop)
+                    if (window.innerWidth > 768) {
+                        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                            navbar.style.transform = 'translateY(-100%)';
+                        } else {
+                            navbar.style.transform = 'translateY(0)';
+                        }
+                    }
+                    
+                    lastScrollY = currentScrollY;
+                }, { passive: true });
+            }
+            
+            toggleMobileMenu() {
+                const navToggle = document.getElementById('nav-toggle');
+                const mobileMenu = document.getElementById('nav-menu-mobile');
+                const isActive = mobileMenu.classList.contains('active');
+                
+                if (isActive) {
+                    this.closeMobileMenu();
+                } else {
+                    this.openMobileMenu();
+                }
+            }
+            
+            openMobileMenu() {
+                const navToggle = document.getElementById('nav-toggle');
+                const mobileMenu = document.getElementById('nav-menu-mobile');
+                const mobileNavLinks = document.querySelectorAll('.nav-menu-mobile .nav-link');
+                
+                navToggle.classList.add('active');
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                
+                // Animate menu items
+                if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                    gsap.fromTo(mobileNavLinks, {
+                        y: 50,
+                        opacity: 0
+                    }, {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        stagger: 0.1,
+                        ease: 'power3.out',
+                        delay: 0.2
+                    });
+                }
+                
+                this.addHapticFeedback();
+            }
+            
+            closeMobileMenu() {
+                const navToggle = document.getElementById('nav-toggle');
+                const mobileMenu = document.getElementById('nav-menu-mobile');
+                
+                navToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+                
+                this.addHapticFeedback();
+            }
+            
+            updateActiveNavLinks(activeId) {
+                // Update desktop nav links
+                const desktopNavLinks = document.querySelectorAll('.nav-menu .nav-link');
+                desktopNavLinks.forEach(link => link.classList.remove('active'));
+                const activeDesktopLink = document.querySelector(`.nav-menu [href="#${activeId}"]`);
+                if (activeDesktopLink) activeDesktopLink.classList.add('active');
+                
+                // Update mobile nav links
+                const mobileNavLinks = document.querySelectorAll('.nav-menu-mobile .nav-link');
+                mobileNavLinks.forEach(link => link.classList.remove('active'));
+                const activeMobileLink = document.querySelector(`.nav-menu-mobile [href="#${activeId}"]`);
+                if (activeMobileLink) activeMobileLink.classList.add('active');
+            }
+            
+            setupParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = window.innerWidth < 768 ? 15 : 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 15 + 's';
+                    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            
+            setupTerminal() {
+                const terminal = document.getElementById('terminal');
+                const commands = [
+                    { delay: 500, line: '<div class="terminal-line"><span class="prompt">shadowgate@arsenal:~$</span> <span class="command">whoami</span></div>' },
+                    { delay: 300, line: '<div class="terminal-line output">Elite Cybersecurity Specialist</div>' },
+                    { delay: 200, line: '<div class="terminal-line output">Security Clearance: TS/SCI</div>' },
+                    { delay: 200, line: '<div class="terminal-line output">Specializations: [Advanced Threats, Zero-Day Research, AI Security]</div>' },
+                    { delay: 800, line: '<br>' },
+                    
+                    { delay: 400, line: '<div class="terminal-line"><span class="prompt">shadowgate@arsenal:~$</span> <span class="command">ls -la ./achievements/</span></div>' },
+                    { delay: 300, line: '<div class="terminal-line output">drwxr-xr-x  12 shadowgate users   384 Dec 15 2024 certifications/</div>' },
+                    { delay: 200, line: '<div class="terminal-line output">drwxr-xr-x   8 shadowgate users   256 Dec 15 2024 cve_discoveries/</div>' },
+                    { delay: 200, line: '<div class="terminal-line output">drwxr-xr-x  15 shadowgate users   480 Dec 15 2024 research_papers/</div>' },
+                    { delay: 200, line: '<div class="terminal-line output">drwxr-xr-x  25 shadowgate users   800 Dec 15 2024 security_tools/</div>' },
+                    { delay: 600, line: '<br>' },
+                    
+                    { delay: 400, line: '<div class="terminal-line"><span class="prompt">shadowgate@arsenal:~$</span> <span class="command">cat ./stats/impact.txt</span></div>' },
+                    { delay: 400, line: '<div class="terminal-line output">Vulnerabilities Discovered: 247</div>' },
+                    { delay: 300, line: '<div class="terminal-line output">Enterprises Secured: 89</div>' },
+                    { delay: 300, line: '<div class="terminal-line output">Security Tools Deployed: 37</div>' },
+                    { delay: 300, line: '<div class="terminal-line output">Threat Actors Neutralized: 156</div>' },
+                    { delay: 800, line: '<br>' },
+                    
+                    { delay: 400, line: '<div class="terminal-line"><span class="prompt">shadowgate@arsenal:~$</span> <span class="command">grep -r "zero-day" ./research/ | head -3</span></div>' },
+                    { delay: 500, line: '<div class="terminal-line output">./research/cve-2024-1337.txt: Critical RCE in enterprise router firmware</div>' },
+                    { delay: 400, line: '<div class="terminal-line output">./research/cve-2024-2891.txt: Authentication bypass in cloud infrastructure</div>' },
+                    { delay: 400, line: '<div class="terminal-line output">./research/apt-analysis.log: Advanced evasion techniques documented</div>' },
+                    { delay: 1000, line: '<br>' },
+                    
+                    { delay: 400, line: '<div class="terminal-line"><span class="prompt">shadowgate@arsenal:~$</span> <span class="command">python3 threat_hunter.py --status</span></div>' },
+                    { delay: 600, line: '<div class="terminal-line output">🛡️  Neural threat detection: ACTIVE</div>' },
+                    { delay: 300, line: '<div class="terminal-line output">🔍 Behavioral analysis: MONITORING</div>' },
+                    { delay: 300, line: '<div class="terminal-line output">⚡ Real-time correlation: PROCESSING</div>' },
+                    { delay: 300, line: '<div class="terminal-line output">🎯 Threat level: SECURED</div>' },
+                    { delay: 1200, line: '<br>' },
+                    
+                    { delay: 400, line: '<div class="terminal-line"><span class="prompt">shadowgate@arsenal:~$</span> <span class="cursor"></span></div>' }
+                ];
+                
+                const terminalObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            this.animateTerminal(commands, 0);
+                            terminalObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                
+                terminalObserver.observe(terminal);
+            }
+            
+            animateTerminal(commands, index) {
+                if (index >= commands.length) return;
+                
+                setTimeout(() => {
+                    const terminal = document.getElementById('terminal');
+                    terminal.innerHTML += commands[index].line;
+                    terminal.scrollTop = terminal.scrollHeight;
+                    
+                    this.animateTerminal(commands, index + 1);
+                }, commands[index].delay);
+            }
+            
+            setupAnimations() {
+                if (this.prefersReducedMotion || typeof gsap === 'undefined') return;
+                
+                // Enhanced hero animations
+                const heroTl = gsap.timeline();
+                heroTl.from('.hero-badge', {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                })
+                .from('.hero-title', {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                }, '-=0.4')
+                .from('.hero-subtitle', {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.6')
+                .from('.hero-description', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.4')
+                .from('.hero-actions .btn', {
+                    y: 20,
+                    opacity: 0,
+                    duration: 0.6,
+                    stagger: 0.1,
+                    ease: 'power3.out'
+                }, '-=0.3')
+                .from('.hero-stats', {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out'
+                }, '-=0.2');
+                
+                // Advanced parallax effects
+                ScrollTrigger.create({
+                    trigger: '.hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        gsap.set('.hero-sigil', {
+                            y: progress * 200,
+                            rotation: progress * 45,
+                            scale: 1 - progress * 0.3,
+                            opacity: 1 - progress * 0.5
+                        });
+                        gsap.set('.hero-grid', {
+                            y: progress * 150,
+                            opacity: 1 - progress * 0.3
+                        });
+                        gsap.set('.hero-particles', {
+                            y: progress * 100
+                        });
+                    }
+                });
+                
+                // Section fade-in animations
+                gsap.utils.toArray('.fade-in').forEach(element => {
+                    ScrollTrigger.create({
+                        trigger: element,
+                        start: 'top 85%',
+                        end: 'bottom 15%',
+                        onEnter: () => {
+                            gsap.to(element, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.8,
+                                ease: 'power3.out'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            setupProjectFilters() {
+                const filterBtns = document.querySelectorAll('.filter-btn');
+                const projectCards = document.querySelectorAll('.project-card');
+                
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const filter = btn.dataset.filter;
+                        
+                        // Update active filter
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        // Filter and animate projects
+                        projectCards.forEach((card, index) => {
+                            const category = card.dataset.category;
+                            const shouldShow = filter === 'all' || category === filter;
+                            
+                            if (shouldShow) {
+                                card.style.display = 'block';
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(30px)';
+                                
+                                if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                                    gsap.to(card, {
+                                        opacity: 1,
+                                        y: 0,
+                                        duration: 0.6,
+                                        delay: index * 0.1,
+                                        ease: 'power3.out'
+                                    });
+                                } else {
+                                    setTimeout(() => {
+                                        card.style.opacity = '1';
+                                        card.style.transform = 'translateY(0)';
+                                    }, index * 100);
+                                }
+                            } else {
+                                if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                                    gsap.to(card, {
+                                        opacity: 0,
+                                        y: -20,
+                                        duration: 0.3,
+                                        onComplete: () => {
+                                            card.style.display = 'none';
+                                        }
+                                    });
+                                } else {
+                                    card.style.display = 'none';
+                                }
+                            }
+                        });
+                    });
+                });
+            }
+            
+            setupProjectCards() {
+                const cards = document.querySelectorAll('.project-card');
+                
+                cards.forEach(card => {
+                    let flipTimeout;
+                    
+                    // Enhanced card interactions
+                    card.addEventListener('click', (e) => {
+                        if (e.target.closest('.project-actions')) return;
+                        this.toggleCardFlip(card);
+                    });
+                    
+                    // Keyboard navigation
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.toggleCardFlip(card);
+                        }
+                    });
+                    
+                    // Auto-flip back with enhanced timing
+                    card.addEventListener('mouseleave', () => {
+                        clearTimeout(flipTimeout);
+                        flipTimeout = setTimeout(() => {
+                            if (!card.matches(':focus-within') && !card.matches(':hover')) {
+                                card.classList.remove('flipped');
+                            }
+                        }, 4000);
+                    });
+                    
+                    // Enhanced hover effects
+                    card.addEventListener('mouseenter', () => {
+                        clearTimeout(flipTimeout);
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(card, {
+                                y: -12,
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(card, {
+                                y: 0,
+                                duration: 0.3,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            toggleCardFlip(card) {
+                card.classList.toggle('flipped');
+                this.addHapticFeedback();
+                
+                // Analytics tracking (mock)
+                const cardTitle = card.querySelector('.project-title')?.textContent;
+                console.log(`📊 Project card interaction: ${cardTitle}`);
+            }
+            
+            setupCounters() {
+                const counters = document.querySelectorAll('.stat-number[data-target]');
+                
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const target = parseInt(entry.target.dataset.target);
+                            this.animateCounter(entry.target, target);
+                            counterObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                counters.forEach(counter => counterObserver.observe(counter));
+            }
+            
+            animateCounter(element, target) {
+                let current = 0;
+                const increment = target / 60; // 60 frames for smooth animation
+                const duration = 2000; // 2 seconds
+                const stepTime = duration / 60;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current);
+                }, stepTime);
+            }
+            
+            setupSkillBars() {
+                const skillBars = document.querySelectorAll('.skill-progress[data-progress]');
+                
+                const skillObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const progress = entry.target.dataset.progress;
+                            
+                            setTimeout(() => {
+                                entry.target.style.width = progress + '%';
+                                
+                                // Add completion celebration effect
+                                setTimeout(() => {
+                                    entry.target.style.boxShadow = '0 0 20px rgba(0,245,255,0.6)';
+                                    setTimeout(() => {
+                                        entry.target.style.boxShadow = '';
+                                    }, 500);
+                                }, parseInt(progress) * 20);
+                            }, 300);
+                            
+                            skillObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.7 });
+                
+                skillBars.forEach(bar => skillObserver.observe(bar));
+            }
+            
+            setupForm() {
+                const form = document.getElementById('contact-form');
+                const inputs = form.querySelectorAll('input, textarea, select');
+                
+                // Enhanced form validation
+                inputs.forEach(input => {
+                    input.addEventListener('input', (e) => {
+                        this.validateInput(e.target);
+                    });
+                    
+                    input.addEventListener('focus', (e) => {
+                        e.target.parentElement.classList.add('focused');
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(e.target, {
+                                scale: 1.02,
+                                duration: 0.2,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                    
+                    input.addEventListener('blur', (e) => {
+                        e.target.parentElement.classList.remove('focused');
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(e.target, {
+                                scale: 1,
+                                duration: 0.2,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                });
+                
+                // Enhanced form submission
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    await this.handleFormSubmission(form);
+                });
+            }
+            
+            validateInput(input) {
+                const value = input.value.trim();
+                let isValid = true;
+                
+                // Basic validation rules
+                switch (input.type) {
+                    case 'email':
+                        isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                        break;
+                    case 'text':
+                        isValid = value.length >= 2;
+                        break;
+                    default:
+                        isValid = value.length > 0;
+                }
+                
+                // Visual feedback
+                if (isValid) {
+                    input.style.borderColor = 'var(--success-primary)';
+                    input.style.boxShadow = '0 0 0 2px rgba(0,255,136,0.2)';
+                } else if (value.length > 0) {
+                    input.style.borderColor = 'var(--danger-primary)';
+                    input.style.boxShadow = '0 0 0 2px rgba(255,68,68,0.2)';
+                } else {
+                    input.style.borderColor = '';
+                    input.style.boxShadow = '';
+                }
+                
+                return isValid;
+            }
+            
+            async handleFormSubmission(form) {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                const submitBtn = form.querySelector('.form-submit');
+                
+                // Validate all fields
+                const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+                let allValid = true;
+                
+                inputs.forEach(input => {
+                    if (!this.validateInput(input)) {
+                        allValid = false;
+                    }
+                });
+                
+                if (!allValid) {
+                    this.showNotification('Please fill in all required fields correctly.', 'error');
+                    return;
+                }
+                
+                // Simulate secure transmission
+                const originalText = submitBtn.textContent;
+                const stages = [
+                    'Encrypting message...',
+                    'Establishing secure channel...',
+                    'Transmitting data...',
+                    'Verifying integrity...',
+                    'Message sent successfully!'
+                ];
+                
+                submitBtn.disabled = true;
+                
+                for (let i = 0; i < stages.length; i++) {
+                    submitBtn.textContent = stages[i];
+                    
+                    if (i === stages.length - 1) {
+                        submitBtn.style.background = 'var(--gradient-success)';
+                        this.showNotification('Your secure message has been transmitted successfully!', 'success');
+                        form.reset();
+                        
+                        // Reset form validation styles
+                        inputs.forEach(input => {
+                            input.style.borderColor = '';
+                            input.style.boxShadow = '';
+                        });
+                    }
+                    
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                }
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }
+            
+            setupScrollEffects() {
+                // Enhanced fade-in animations
+                const fadeElements = document.querySelectorAll('.fade-in');
+                
+                const fadeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { 
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -100px 0px'
+                });
+                
+                fadeElements.forEach(el => {
+                    el.classList.remove('visible');
+                    fadeObserver.observe(el);
+                });
+            }
+            
+            setupEnhancedInteractions() {
+                // Enhanced button interactions
+                const interactiveElements = document.querySelectorAll('.btn, .action-btn, .filter-btn, .cert-item, .contact-method');
+                
+                interactiveElements.forEach(element => {
+                    element.addEventListener('mouseenter', () => {
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(element, {
+                                scale: 1.05,
+                                duration: 0.2,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                    
+                    element.addEventListener('mouseleave', () => {
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(element, {
+                                scale: 1,
+                                duration: 0.2,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                    
+                    element.addEventListener('click', () => {
+                        this.addHapticFeedback();
+                        
+                        if (!this.prefersReducedMotion && typeof gsap !== 'undefined') {
+                            gsap.to(element, {
+                                scale: 0.95,
+                                duration: 0.1,
+                                yoyo: true,
+                                repeat: 1,
+                                ease: 'power2.out'
+                            });
+                        }
+                    });
+                });
+                
+                // Konami code easter egg
+                this.setupKonamiCode();
+                
+                // Enhanced keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        document.body.classList.add('keyboard-navigation');
+                    }
+                });
+                
+                document.addEventListener('mousedown', () => {
+                    document.body.classList.remove('keyboard-navigation');
+                });
+            }
+            
+            setupKonamiCode() {
+                const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+                let konamiSequence = [];
+                
+                document.addEventListener('keydown', (e) => {
+                    konamiSequence.push(e.keyCode);
+                    
+                    if (konamiSequence.length > konamiCode.length) {
+                        konamiSequence = konamiSequence.slice(-konamiCode.length);
+                    }
+                    
+                    if (konamiSequence.join(',') === konamiCode.join(',')) {
+                        this.activateEasterEgg();
+                        konamiSequence = [];
+                    }
+                });
+            }
+            
+            activateEasterEgg() {
+                // Matrix-style digital rain effect
+                const isActive = document.body.classList.contains('matrix-mode');
+                
+                if (!isActive) {
+                    document.body.classList.add('matrix-mode');
+                    document.body.style.filter = 'hue-rotate(120deg) contrast(1.2)';
+                    this.showNotification('🎮 Matrix mode activated! Welcome to the real world...', 'success');
+                    
+                    // Add falling characters effect
+                    this.createMatrixRain();
+                } else {
+                    document.body.classList.remove('matrix-mode');
+                    document.body.style.filter = '';
+                    this.showNotification('🛡️ Returning to normal operations...', 'info');
+                    
+                    // Remove matrix effect
+                    const matrixCanvas = document.querySelector('.matrix-canvas');
+                    if (matrixCanvas) matrixCanvas.remove();
+                }
+            }
+            
+            createMatrixRain() {
+                const canvas = document.createElement('canvas');
+                canvas.className = 'matrix-canvas';
+                canvas.style.position = 'fixed';
+                canvas.style.top = '0';
+                canvas.style.left = '0';
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                canvas.style.pointerEvents = 'none';
+                canvas.style.zIndex = '9999';
+                canvas.style.opacity = '0.3';
+                
+                document.body.appendChild(canvas);
+                
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
+                const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+                const matrixArray = matrix.split("");
+                
+                const fontSize = 10;
+                const columns = canvas.width / fontSize;
+                const drops = [];
+                
+                for (let x = 0; x < columns; x++) {
+                    drops[x] = 1;
+                }
+                
+                function draw() {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    ctx.fillStyle = '#0F0';
+                    ctx.font = fontSize + 'px monospace';
+                    
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                        
+                        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
+                
+                const matrixInterval = setInterval(draw, 35);
+                
+                // Auto-cleanup after 30 seconds
+                setTimeout(() => {
+                    clearInterval(matrixInterval);
+                    if (canvas.parentNode) {
+                        canvas.remove();
+                    }
+                }, 30000);
+            }
+            
+            setupPerformanceMonitoring() {
+                // Performance monitoring
+                if ('performance' in window) {
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            const perfData = performance.getEntriesByType('navigation')[0];
+                            const paintEntries = performance.getEntriesByType('paint');
+                            
+                            const metrics = {
+                                loadTime: Math.round(perfData.loadEventEnd - perfData.fetchStart),
+                                domContentLoaded: Math.round(perfData.domContentLoadedEventEnd - perfData.fetchStart),
+                                firstPaint: paintEntries.find(entry => entry.name === 'first-paint')?.startTime || 'N/A',
+                                firstContentfulPaint: paintEntries.find(entry => entry.name === 'first-contentful-paint')?.startTime || 'N/A'
+                            };
+                            
+                            console.log('🚀 ShadowGate Performance Metrics:', metrics);
+                            
+                            // Performance badge for good metrics
+                            if (metrics.loadTime < 3000 && metrics.domContentLoaded < 2000) {
+                                console.log('✅ Performance: EXCELLENT');
+                            }
+                        }, 1000);
+                    });
+                }
+                
+                // Error handling with user feedback
+                window.addEventListener('error', (e) => {
+                    console.error('🔥 ShadowGate Error:', e.error);
+                    
+                    // Graceful degradation
+                    if (e.error.message.includes('gsap') || e.error.message.includes('ScrollTrigger')) {
+                        this.setupFallbackAnimations();
+                        console.log('⚡ Fallback animations activated');
+                    }
+                });
+            }
+            
+            setupFallbackAnimations() {
+                // CSS-only animations for fallback
+                const style = document.createElement('style');
+                style.textContent = `
+                    .fade-in {
+                        animation: fadeInUp 0.8s ease forwards;
+                    }
+                    
+                    @keyframes fadeInUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                    
+                    .project-card:hover {
+                        transform: translateY(-8px);
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    .btn:hover {
+                        transform: translateY(-2px);
+                        transition: transform 0.3s ease;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            addHapticFeedback() {
+                // Simulate haptic feedback for supported devices
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(50);
+                }
+            }
+            
+            showNotification(message, type = 'info') {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 1rem 1.5rem;
+                    background: var(--glass-strong);
+                    border: 1px solid var(--${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'cyan'}-primary);
+                    border-radius: 0.5rem;
+                    color: var(--text-primary);
+                    backdrop-filter: blur(10px);
+                    z-index: 10000;
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                    max-width: 300px;
+                    font-size: 0.9rem;
+                `;
+                
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
+                
+                // Auto remove
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }, 4000);
+            }
+        }
+        
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new ShadowGatePortfolio();
+            });
+        } else {
+            new ShadowGatePortfolio();
+        }
+        
+        // Export for debugging
+        window.ShadowGatePortfolio = ShadowGatePortfolio;
+    </script>
+</body>
+</html>
